@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">AssignmentShaaySoft</string>
+    <string-array name="dropdown_items">
+        <item>Je choisis un chien</item>
+        <item>J ajoute un chien</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="stimulation">
+        <item>Progressive stimulation</item>
+        <item>Light stimulation</item>
+        <item>Strong stimulation</item>
+        <item>Beeps sounds only</item>
+    </string-array>
+</resources>

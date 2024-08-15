@@ -69,7 +69,7 @@
 
         <TextView
             android:id="@+id/datetxtView"
-            android:layout_width="83dp"
+            android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="10dp"
@@ -93,27 +93,38 @@
 <!--        app:layout_constraintTop_toBottomOf="@id/topBar" />-->
 
 
-    <FrameLayout
-        android:id="@+id/chartContainer"
+    <LinearLayout
+        android:id="@+id/progressChart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/navBar"
+        >
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/circularProgressIndicator"
+        android:layout_width="261dp"
+        android:layout_height="152dp"
+        android:indeterminate="false"
+        app:indicatorColor="#000000"
+        app:indicatorSize="200dp"
+        app:trackColor="#AF4C5B"
+        app:trackThickness="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/progressText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/navBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <View
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@drawable/ic_launcher_background"/>
-
-        <Button
-            android:id="@+id/btndetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DETAILS"
-            android:layout_gravity="center"/>
-    </FrameLayout>
+        android:text="0"
+        android:layout_centerInParent="true"
+        android:textColor="#701927"
+        android:textSize="32sp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/circularProgressIndicator"
+        app:layout_constraintStart_toStartOf="parent"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/lightStimulationContainer"
@@ -124,7 +135,7 @@
         android:padding="8dp"
         android:gravity="center"
         android:background="@drawable/border"
-        app:layout_constraintTop_toBottomOf="@id/chartContainer"
+        app:layout_constraintTop_toBottomOf="@id/progressChart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
@@ -245,11 +256,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btnBack"
             android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/out" />
+            android:layout_height="30dp"
+            android:src="@drawable/out"  />
 
         <LinearLayout
             android:id="@+id/iconLayout"

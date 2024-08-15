@@ -238,6 +238,7 @@
             android:textColor="@android:color/black"/>
 
         <ImageView
+            android:id="@+id/btnOpenDialog"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/configuration"

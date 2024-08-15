@@ -5,4 +5,5 @@
     <color name="orange">#FF9800</color>
     <color name="gray">#494846</color>
     <color name="corrected">#70072A</color>
+    <color name="colorPrimaryButtonBg">#18206F</color>
 </resources>

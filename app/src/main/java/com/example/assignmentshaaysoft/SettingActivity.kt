@@ -28,6 +28,13 @@ class SettingActivity : AppCompatActivity() {
         var btnBack = findViewById<ImageView>(R.id.btnBack)
 
         val btnOpenDialog = findViewById<ImageView>(R.id.btnOpenDialog)
+        val btnTues = findViewById<ImageView>(R.id.btnTues)
+        val btnWed = findViewById<ImageView>(R.id.btnWed)
+        val btnThur = findViewById<ImageView>(R.id.btnThur)
+        val btnFri = findViewById<ImageView>(R.id.btnFri)
+        val btnSat = findViewById<ImageView>(R.id.btnSat)
+        val btnSun = findViewById<ImageView>(R.id.btnSun)
+
 
         pawIcon.setOnClickListener {
             toggleIconVisibility()
@@ -76,6 +83,30 @@ class SettingActivity : AppCompatActivity() {
 
         //open custom dialog code
         btnOpenDialog.setOnClickListener {
+            showTimeSelectorDialog(0)
+        }
+
+        btnTues.setOnClickListener {
+            showTimeSelectorDialog(0)
+        }
+
+        btnWed.setOnClickListener {
+            showTimeSelectorDialog(0)
+        }
+
+        btnThur.setOnClickListener {
+            showTimeSelectorDialog(0)
+        }
+
+        btnFri.setOnClickListener {
+            showTimeSelectorDialog(0)
+        }
+
+        btnSat.setOnClickListener {
+            showTimeSelectorDialog(0)
+        }
+
+        btnSun.setOnClickListener {
             showTimeSelectorDialog(0)
         }
 

@@ -2,42 +2,40 @@ package com.example.assignmentshaaysoft
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Color
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.progressindicator.CircularProgressIndicator
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
 
-class HomeActivity : AppCompatActivity() {
-    private lateinit var circularProgressIndicator: CircularProgressIndicator
-    private lateinit var progressText: TextView
-    var i = 0
+class ReportActivity : AppCompatActivity() {
+    lateinit var barChart: BarChart
+    lateinit var barData: BarData
+    lateinit var barDataSet: BarDataSet
+    lateinit var barEntriesList : ArrayList<BarEntry>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_report)
+        val imgCalender = findViewById<ImageView>(R.id.imgCalender)
+        val datetxtView = findViewById<TextView>(R.id.datetxtView)
+        val settingIcon = findViewById<ImageView>(R.id.settingIcon)
         val btnBack : ImageView = findViewById(R.id.btnBack)
-
         val pawIcon = findViewById<ImageView>(R.id.pawIcon)
         pawIcon.setOnClickListener {
             toggleIconVisibility()
         }
-         val settingIcon = findViewById<ImageView>(R.id.settingIcon)
 
         settingIcon.setOnClickListener {
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
-
-        val imgCalender = findViewById<ImageView>(R.id.imgCalender)
-        val datetxtView = findViewById<TextView>(R.id.datetxtView)
 
         imgCalender.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -56,42 +54,36 @@ class HomeActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.progressChart)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        circularProgressIndicator = findViewById(R.id.circularProgressIndicator)
-        progressText = findViewById(R.id.progressText)
+        barChart = findViewById(R.id.idBarChart)
+        getBarChartData()
 
-        Handler(Looper.getMainLooper()).postDelayed(object : Runnable {
-            override fun run() {
-                // set the limitations for the numeric
-                // text under the progress bar
-                if (i <= 100) {
-                    progressText.text = "$i %"
-                    circularProgressIndicator.progress = i
-                    i++
-                    Handler(Looper.getMainLooper()).postDelayed(this, 200)
-                } else {
-                    Handler(Looper.getMainLooper()).removeCallbacks(this)
-                }
-            }
-        }, 200)
+        barDataSet = BarDataSet(barEntriesList, "Bar Chart Data")
+        barData = BarData(barDataSet)
+        barChart.data = barData
+        barDataSet.valueTextColor = Color.BLACK
 
-        val btnDetails : Button = findViewById(R.id.btnDetails)
-        btnDetails.setOnClickListener {
-            val intent = Intent(this, ReportActivity::class.java)
-            startActivity(intent)
-        }
+        barDataSet.setColor(resources.getColor(R.color.orange))
+        barDataSet.valueTextSize = 16f
+        barChart.description.isEnabled = false
 
         btnBack.setOnClickListener {
             var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-        }
 
+    }
 
+    private fun getBarChartData() {
+        barEntriesList = ArrayList()
+
+        // on below line we are adding data
+        // to our bar entries list
+        barEntriesList.add(BarEntry(1f, 1f))
+        barEntriesList.add(BarEntry(2f, 2f))
+        barEntriesList.add(BarEntry(3f, 3f))
+        barEntriesList.add(BarEntry(4f, 4f))
+        barEntriesList.add(BarEntry(5f, 5f))
+    }
 
     private fun toggleIconVisibility() {
         val iconLayout = findViewById<LinearLayout>(R.id.iconLayout)
@@ -103,6 +95,5 @@ class HomeActivity : AppCompatActivity() {
             iconLayout.visibility = View.VISIBLE
         }
     }
-    }
 
-
+}

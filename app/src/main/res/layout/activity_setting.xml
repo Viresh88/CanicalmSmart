@@ -268,6 +268,7 @@
                 android:textColor="@android:color/black"/>
 
             <ImageView
+                android:id="@+id/btnTues"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/configuration"
@@ -297,6 +298,7 @@
                 android:textColor="@android:color/black"/>
 
             <ImageView
+                android:id="@+id/btnWed"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/configuration"
@@ -326,6 +328,7 @@
                 android:textColor="@android:color/black"/>
 
             <ImageView
+                android:id="@+id/btnThur"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/configuration"
@@ -355,6 +358,7 @@
                 android:textColor="@android:color/black"/>
 
             <ImageView
+                android:id="@+id/btnFri"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/configuration"
@@ -384,6 +388,7 @@
                 android:textColor="@android:color/black"/>
 
             <ImageView
+                android:id="@+id/btnSat"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/configuration"
@@ -413,6 +418,7 @@
                 android:textColor="@android:color/black"/>
 
             <ImageView
+                android:id="@+id/btnSun"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/configuration"

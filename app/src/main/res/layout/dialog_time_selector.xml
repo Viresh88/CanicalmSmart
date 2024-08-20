@@ -71,6 +71,7 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="3dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -80,6 +81,7 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="3dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -89,6 +91,7 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="3dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -98,16 +101,7 @@
             android:layout_columnWeight="1"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
-            android:text="23h-00h"
-            android:textSize="10sp" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -118,6 +112,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -128,15 +123,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
-            android:text="23h-00h"
-            android:textSize="10sp" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginTop="5dp"
-            android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -147,6 +134,17 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
+            android:text="23h-00h"
+            android:textSize="10sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_marginTop="5dp"
+            android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -157,6 +155,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -167,15 +166,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
-            android:text="23h-00h"
-            android:textSize="10sp" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginTop="5dp"
-            android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -186,6 +177,17 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
+            android:text="23h-00h"
+            android:textSize="10sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_marginTop="5dp"
+            android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -196,6 +198,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -206,15 +209,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
-            android:text="23h-00h"
-            android:textSize="10sp" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginTop="5dp"
-            android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -225,6 +220,17 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
+            android:text="23h-00h"
+            android:textSize="10sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_marginTop="5dp"
+            android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -235,6 +241,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -245,15 +252,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
-            android:text="23h-00h"
-            android:textSize="10sp" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginTop="5dp"
-            android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -264,6 +263,17 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
+            android:text="23h-00h"
+            android:textSize="10sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_marginTop="5dp"
+            android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -274,6 +284,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 
@@ -284,6 +295,18 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
+            android:textColor="@color/white"
+            android:text="23h-00h"
+            android:textSize="10sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/gray"
+            android:textColor="@color/white"
             android:text="23h-00h"
             android:textSize="10sp" />
 

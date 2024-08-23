@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">AssignmentShaaySoft</string>
+    <string name="choose_dog">Choose a Dog</string>
     <string-array name="dropdown_items">
-        <item>Je choisis un chien</item>
-        <item>J ajoute un chien</item>
-        <item>English</item>
+        <item>Choose a Dog</item>
+        <item>Demo</item>
     </string-array>
 
     <string-array name="stimulation">

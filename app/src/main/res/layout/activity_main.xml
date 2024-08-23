@@ -48,23 +48,23 @@
                 android:layout_height="100dp"
                 android:background="@color/orange">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="by"
-                android:textSize="26sp"
-                android:textColor="@color/black"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="200dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="30dp"
+                    android:text="by"
+                    android:textColor="@color/black"
+                    android:textSize="26sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="26sp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
+                    android:text="Num' axes"
                     android:textColor="@color/white"
-                    android:text="Num' axes"/>
+                    android:textSize="26sp" />
 
 
             </LinearLayout>
@@ -75,23 +75,54 @@
 
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinner1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="10dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:padding="8dp" />
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose a Dog"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:prompt="@string/choose_dog"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="10dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:padding="8dp" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add a Dog"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/btnAdd"
+            android:layout_width="91dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/plus"/>
+
+    </LinearLayout>
 
     <Spinner
         android:id="@+id/languageSpinner"

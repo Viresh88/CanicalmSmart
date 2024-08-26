@@ -28,6 +28,7 @@ import com.example.assignmentshaaysoft.database.DogDatabaseHelper
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bluetoothAdapter: BluetoothAdapter
+    private var isReceiverRegistered = false
     private lateinit var dialog: AlertDialog
     private lateinit var progressBar: ProgressBar
     private lateinit var messageTextView: TextView
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var dogDatabaseHelper: DogDatabaseHelper
     private lateinit var dogSpinner: Spinner
+    private var isSpinnerInitialized = false
 
     private val bluetoothReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -81,6 +83,7 @@ class MainActivity : AppCompatActivity() {
 
         loadDogDataIntoSpinner()
 
+
 //        ArrayAdapter.createFromResource(
 //            this,
 //            R.array.dropdown_items,
@@ -122,7 +125,14 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = LanguageAdapter(this, languageList)
         languageSpinner.adapter = adapter
+    }
 
+    private fun navigateToHomePage(selectDog: Dog) {
+          val intent = Intent(this, HomeActivity::class.java).apply {
+              putExtra("DOG_NAME", selectDog.name)
+          }
+        startActivity(intent)
+        finish()
     }
 
     private fun loadDogDataIntoSpinner() {
@@ -133,11 +143,20 @@ class MainActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         dogSpinner.adapter = adapter
 
-        dogSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        dogSpinner.onItemSelectedListener =object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedDog = dogs[position]
-                // Handle dog selection, e.g., display its details
-                Toast.makeText(this@MainActivity, "Selected: ${selectedDog.name}", Toast.LENGTH_SHORT).show()
+                if (isSpinnerInitialized) {
+                    val selectedDog = dogs[position]
+                    // Handle dog selection, e.g., display its details
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Selected: ${selectedDog.name}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigateToHomePage(selectedDog)
+                } else{
+                    isSpinnerInitialized = true
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -150,8 +169,10 @@ class MainActivity : AppCompatActivity() {
     private fun startBluetoothDiscovery() {
         val filter = IntentFilter(BluetoothDevice.ACTION_FOUND)
         filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)
-        registerReceiver(bluetoothReceiver, filter)
-
+        if (!isReceiverRegistered) {
+            registerReceiver(bluetoothReceiver, filter)
+            isReceiverRegistered = true
+        }
         bluetoothAdapter.startDiscovery()
     }
 
@@ -194,7 +215,10 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(bluetoothReceiver)
+        if (isReceiverRegistered) {
+            unregisterReceiver(bluetoothReceiver)
+            isReceiverRegistered = false
+        }
     }
 
     private fun saveDogToDatabase(dogName: String, collarAddress: String) {

@@ -18,7 +18,7 @@ class DogDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
 
     companion object {
         const val DATABASE_NAME = "CanicalmSmart.db"
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 2
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -27,6 +27,12 @@ class DogDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                 "${DogContract.DogEntry.COLUMN_NAME} TEXT," +
                 "${DogContract.DogEntry.COLUMN_COLLAR_ADDRESS} TEXT)"
         db.execSQL(SQL_CREATE_ENTRIES)
+
+        val insertDemoDog = "INSERT INTO ${DogContract.DogEntry.TABLE_NAME} (${DogContract.DogEntry.COLUMN_NAME}, ${DogContract.DogEntry.COLUMN_COLLAR_ADDRESS}) VALUES ('Demo Dog', '00:00:00:00:00:00')"
+        val insertDemoDog2 = "INSERT INTO ${DogContract.DogEntry.TABLE_NAME} (${DogContract.DogEntry.COLUMN_NAME}, ${DogContract.DogEntry.COLUMN_COLLAR_ADDRESS}) VALUES ('Demo Dog2', '00:00:00:00:00:00')"
+
+        db.execSQL(insertDemoDog)
+        db.execSQL(insertDemoDog2)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -35,23 +41,20 @@ class DogDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
     }
 
     fun getAllDogs(): List<Dog> {
-        val dogs = mutableListOf<Dog>()
         val db = readableDatabase
         val cursor = db.query(
             DogContract.DogEntry.TABLE_NAME,
-            null,  // Select all columns
-            null,
-            null,
-            null,
-            null,
-            null
+            arrayOf(BaseColumns._ID, DogContract.DogEntry.COLUMN_NAME, DogContract.DogEntry.COLUMN_COLLAR_ADDRESS),
+            null, null, null, null, null
         )
 
+        val dogs = mutableListOf<Dog>()
         with(cursor) {
             while (moveToNext()) {
+                val id = getLong(getColumnIndexOrThrow(BaseColumns._ID))
                 val name = getString(getColumnIndexOrThrow(DogContract.DogEntry.COLUMN_NAME))
                 val collarAddress = getString(getColumnIndexOrThrow(DogContract.DogEntry.COLUMN_COLLAR_ADDRESS))
-                dogs.add(Dog(name, collarAddress))
+                dogs.add(Dog(id,name, collarAddress))
             }
             close()
         }

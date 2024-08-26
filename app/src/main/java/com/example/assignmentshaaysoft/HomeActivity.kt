@@ -56,28 +56,8 @@ class HomeActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.progressChart)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        circularProgressIndicator = findViewById(R.id.circularProgressIndicator)
-        progressText = findViewById(R.id.progressText)
-
-        Handler(Looper.getMainLooper()).postDelayed(object : Runnable {
-            override fun run() {
-                // set the limitations for the numeric
-                // text under the progress bar
-                if (i <= 100) {
-                    progressText.text = "$i %"
-                    circularProgressIndicator.progress = i
-                    i++
-                    Handler(Looper.getMainLooper()).postDelayed(this, 200)
-                } else {
-                    Handler(Looper.getMainLooper()).removeCallbacks(this)
-                }
-            }
-        }, 200)
+        val gauge = findViewById<SemiCircularGaugeView>(R.id.semiCircularGauge)
+        gauge.setProgress(90f)
 
         val btnDetails : Button = findViewById(R.id.btnDetails)
         btnDetails.setOnClickListener {

@@ -95,43 +95,31 @@
 
     <LinearLayout
         android:id="@+id/progressChart"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/navBar"
-        >
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/circularProgressIndicator"
-        android:layout_width="261dp"
-        android:layout_height="152dp"
-        android:indeterminate="false"
-        app:indicatorColor="#000000"
-        app:indicatorSize="200dp"
-        app:trackColor="#AF4C5B"
-        app:trackThickness="15dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/progressText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_centerInParent="true"
-        android:textColor="#701927"
-        android:textSize="32sp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/circularProgressIndicator"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-        <Button
-            android:id="@+id/btnDetails"
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Details"
-            android:background="@drawable/button_background"/>
+            android:layout_height="286dp"
+            android:layout_gravity="center">
+
+            <com.example.assignmentshaaysoft.SemiCircularGaugeView
+                android:id="@+id/semiCircularGauge"
+                android:layout_width="match_parent"
+                android:layout_height="317dp" />
+
+            <Button
+                android:id="@+id/btnDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_background"
+                android:text="Details" />
+
+        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout

@@ -119,8 +119,8 @@ class SettingActivity : AppCompatActivity() {
     private fun showTimeSelectorDialog(initialDayIndex:Int) {
            val dialog = Dialog(this)
            dialog.setContentView(R.layout.dialog_time_selector)
-//           dialog.getWindow()?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-           dialog.setCancelable(false)
+           dialog.getWindow()?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+           dialog.setCancelable(true)
 
            val dayTitle : TextView = dialog.findViewById(R.id.dayTitle)
            val btnPrev : ImageView = dialog.findViewById(R.id.btnPrev)
@@ -130,12 +130,17 @@ class SettingActivity : AppCompatActivity() {
           var currIndex = initialDayIndex
           dayTitle.text = daysOfWeek[currIndex]
 
-          btnNext.setOnClickListener {
-               if (currIndex < daysOfWeek.size - 1){
-                   currIndex++;
-                   dayTitle.text = daysOfWeek[currIndex]
-               }
-          }
+//          btnNext.setOnClickListener {
+//               if (currIndex < daysOfWeek.size - 1){
+//                   currIndex++;
+//                   dayTitle.text = daysOfWeek[currIndex]
+//               }
+//          }
+
+        btnNext.setOnClickListener {
+            currIndex = (currIndex + 1) % daysOfWeek.size
+            dayTitle.text = daysOfWeek[currIndex]
+        }
 
          btnPrev.setOnClickListener {
              if (currIndex > 0){
@@ -154,7 +159,7 @@ class SettingActivity : AppCompatActivity() {
     private fun toggleIconVisibility() {
         val iconLayout = findViewById<LinearLayout>(R.id.iconLayout)
 
-        // Toggle visibility
+
         if (iconLayout.visibility == View.VISIBLE) {
             iconLayout.visibility = View.INVISIBLE
         } else {

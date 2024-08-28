@@ -9,3 +9,492 @@
     android:padding="14dp"
     android:layout_height="wrap_content"
     android:text="TextView" />
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--&lt;!&ndash;<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"&ndash;&gt;-->
+<!--&lt;!&ndash;xmlns:app="http://schemas.android.com/apk/res-auto"&ndash;&gt;-->
+<!--&lt;!&ndash;xmlns:tools="http://schemas.android.com/tools"&ndash;&gt;-->
+<!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;tools:context=".SettingActivity">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;    android:id="@+id/topBar"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:orientation="horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:background="#FFA726"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:padding="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintEnd_toEndOf="parent">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/homeIcon"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:src="@drawable/home"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_weight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:text="Demo"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textSize="20sp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginLeft="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textColor="@color/black"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash;        android:drawableStart="@drawable/ic_launcher_background"/>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/appSubtitle"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:text="Canicalm Smart"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textColor="@color/black" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/settingIcon"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="64dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="31dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:src="@drawable/param" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;    android:id="@+id/navBar"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:background="@color/gray"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:padding="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintTop_toBottomOf="@id/topBar"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:orientation="horizontal">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/imgSetting"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="25dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="25dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginLeft="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginTop="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:src="@drawable/param" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <Button&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/btnToday"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="?attr/selectableItemBackground"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:text="SETTINGS"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textSize="16sp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textColor="@color/orange" />&ndash;&gt;-->
+<!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;    android:id="@+id/edtDog"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:orientation="horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:padding="4dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_marginTop="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintTop_toBottomOf="@id/navBar"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintStart_toStartOf="parent">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; EditText with Emoji &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <EditText&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/editText"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_weight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@drawable/edit_text_background"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:clickable="false"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:drawablePadding="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:focusable="false"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:padding="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:text="Demo 🐶"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textColor="@android:color/black"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textSize="16sp" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; Edit Button &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/editButton"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="54dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="36dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginStart="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@drawable/edit_text_background"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:contentDescription="Edit"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:padding="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:src="@drawable/edit" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; Delete Button &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/deleteButton"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="53dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="36dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginStart="4dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@drawable/edit_text_background"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:contentDescription="Delete"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:padding="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:src="@drawable/delete" />&ndash;&gt;-->
+<!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<Spinner&ndash;&gt;-->
+<!--&lt;!&ndash;    android:id="@+id/languageSpinner"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_marginTop="16dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_marginStart="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:background="@android:drawable/btn_dropdown"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintTop_toBottomOf="@+id/edtDog"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:padding="8dp"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<Spinner&ndash;&gt;-->
+<!--&lt;!&ndash;    android:id="@+id/settingSpinner"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_marginTop="16dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_marginStart="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:background="@android:drawable/btn_dropdown"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintTop_toBottomOf="@id/languageSpinner"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:padding="8dp" />&ndash;&gt;-->
+
+<!--<LinearLayout-->
+<!--    android:id="@+id/seekbarBox"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginStart="10dp"-->
+<!--    android:layout_marginEnd="10dp"-->
+<!--    android:layout_marginTop="16dp"-->
+<!--    android:background="@drawable/border"-->
+<!--    android:orientation="vertical"-->
+<!--    android:padding="16dp"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toBottomOf="@+id/settingSpinner">-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:text="Level of detection"-->
+<!--        android:textSize="18sp" />-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="8dp">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="29dp"-->
+<!--            android:layout_height="26dp"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:src="@drawable/low_barkings" />-->
+
+<!--        <SeekBar-->
+<!--            android:id="@+id/seekBar"-->
+<!--            android:layout_width="285dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:indeterminate="false"-->
+<!--            android:max="100"-->
+<!--            android:progress="0"-->
+<!--            android:progressDrawable="@drawable/custom_seekbar"-->
+<!--            android:thumb="@drawable/seekbar_thumb" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="29dp"-->
+<!--            android:layout_height="26dp"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:src="@drawable/high_barkings" />-->
+
+
+<!--    </LinearLayout>-->
+<!--</LinearLayout>-->
+
+<!--&lt;!&ndash;<ScrollView&ndash;&gt;-->
+<!--&lt;!&ndash;    android:id="@+id/scrollView"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:background="@drawable/border"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_marginTop="16dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_marginStart="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_marginEnd="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_marginBottom="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintTop_toBottomOf="@id/seekbarBox"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintBottom_toTopOf="@id/bottomBar"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintEnd_toEndOf="parent">&ndash;&gt;-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="16dp">-->
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:layout_marginBottom="16dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Monday"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@android:color/black"/>-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/btnOpenDialog"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/configuration"-->
+<!--                android:layout_marginLeft="8dp"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <SeekBar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:progress="20"/>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:layout_marginBottom="16dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Tuesday"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@android:color/black"/>-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/btnTues"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/configuration"-->
+<!--                android:layout_marginLeft="8dp"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <SeekBar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:progress="30"/>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:layout_marginBottom="16dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Wednesday"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@android:color/black"/>-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/btnWed"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/configuration"-->
+<!--                android:layout_marginLeft="8dp"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <SeekBar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:progress="30"/>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:layout_marginBottom="16dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Thursday"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@android:color/black"/>-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/btnThur"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/configuration"-->
+<!--                android:layout_marginLeft="8dp"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <SeekBar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:progress="30"/>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:layout_marginBottom="16dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Friday"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@android:color/black"/>-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/btnFri"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/configuration"-->
+<!--                android:layout_marginLeft="8dp"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <SeekBar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:progress="30"/>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:layout_marginBottom="16dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Saturday"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@android:color/black"/>-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/btnSat"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/configuration"-->
+<!--                android:layout_marginLeft="8dp"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <SeekBar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:progress="30"/>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:layout_marginBottom="16dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Sunday"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@android:color/black"/>-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/btnSun"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/configuration"-->
+<!--                android:layout_marginLeft="8dp"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <SeekBar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:progress="30"/>-->
+
+
+<!--    </LinearLayout>-->
+<!--&lt;!&ndash;</ScrollView>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;    android:id="@+id/bottomBar"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:background="#FFA726"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:orientation="horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_marginTop="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintStart_toStartOf="parent">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/btnBack"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="50dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="30dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:src="@drawable/out" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/iconLayout"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:orientation="horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:visibility="invisible">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="40dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="35dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_marginLeft="180dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="@color/gray"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:src="@drawable/check" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="40dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="35dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_marginLeft="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="@color/gray"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:src="@drawable/batt_40" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </LinearLayout>&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;    &lt;!&ndash; Paw icon &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/pawIcon"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="85dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginLeft="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@color/gray"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:src="@drawable/dog_paw"/>&ndash;&gt;-->
+<!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;</androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;-->

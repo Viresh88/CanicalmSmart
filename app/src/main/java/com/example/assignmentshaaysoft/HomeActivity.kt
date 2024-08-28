@@ -36,8 +36,16 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val txtDogName = findViewById<TextView>(R.id.txtDogName)
         val imgCalender = findViewById<ImageView>(R.id.imgCalender)
         val datetxtView = findViewById<TextView>(R.id.datetxtView)
+
+        val dogName = intent.getStringExtra("DOG_NAME")
+        if (!dogName.isNullOrEmpty()) {
+            txtDogName.text = dogName
+        } else{
+            txtDogName.text = "No dog selected"
+        }
 
         imgCalender.setOnClickListener {
             val calendar = Calendar.getInstance()

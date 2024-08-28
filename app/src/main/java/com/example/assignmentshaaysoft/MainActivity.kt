@@ -183,7 +183,7 @@ class MainActivity : AppCompatActivity() {
         dogNameEditText = dialogView.findViewById(R.id.etDogName)
         okButton = dialogView.findViewById(R.id.btnOk)
 
-        dialog = AlertDialog.Builder(this).setView(dialogView).setCancelable(false).create()
+        dialog = AlertDialog.Builder(this).setView(dialogView).setCancelable(true).create()
         dialog.show()
 
         okButton.setOnClickListener {

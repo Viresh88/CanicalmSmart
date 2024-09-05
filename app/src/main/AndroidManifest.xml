@@ -9,8 +9,12 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
-    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AssignmentShaaySoft"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Demo"
+            android:exported="false" />
         <activity
             android:name=".ReportActivity"
             android:exported="false" />
@@ -31,9 +37,7 @@
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

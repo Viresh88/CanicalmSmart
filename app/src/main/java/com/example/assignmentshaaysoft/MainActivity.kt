@@ -1,5 +1,6 @@
 package com.example.assignmentshaaysoft
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -54,6 +55,9 @@ class MainActivity : AppCompatActivity() {
             val selectedLanguage = languageText.text.toString()
             val selectedDevice = deviceText.text.toString()
             Toast.makeText(this, "Selected: $selectedLanguage, $selectedDevice", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
     }
 

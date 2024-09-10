@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <!-- Select Language -->
     <TextView
         android:id="@+id/tvSelectLanguage"
         android:layout_width="wrap_content"

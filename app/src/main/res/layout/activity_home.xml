@@ -44,9 +44,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="16dp">
 
@@ -55,51 +55,97 @@
                 android:id="@+id/collarImage"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/collarimg" />
+                android:src="@drawable/collarimg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/collarName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tommy Collar"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                android:textSize="16sp"/>
+                app:layout_constraintLeft_toRightOf="@id/collarImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/batteryimg"
+                android:layout_width="22dp"
+                android:layout_height="12dp"
+                android:src="@drawable/battery"
+                app:layout_constraintLeft_toRightOf="@id/collarImage"
+                app:layout_constraintTop_toBottomOf="@id/collarName" />
+
+            <TextView
+                android:id="@+id/battrypercent"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:text="100%"
+                android:textSize="10sp"
+                app:layout_constraintLeft_toRightOf="@id/batteryimg"
+                app:layout_constraintTop_toBottomOf="@id/collarName"/>
+
 
             <!-- Collar Details -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:paddingStart="16dp">
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:paddingStart="16dp">-->
 
 
+            <!--                <TextView-->
+            <!--                    android:id="@+id/collarBattery"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="100%"-->
+            <!--                    android:textSize="12sp"/>-->
 
-                <TextView
-                    android:id="@+id/collarBattery"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="100%"
-                    android:textSize="12sp"/>
-
-                <TextView
-                    android:id="@+id/collarConnectionStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Connected"
-                    android:textColor="@color/green"
-                    android:textSize="12sp"/>
-            </LinearLayout>
+            <!--                <TextView-->
+            <!--                    android:id="@+id/collarConnectionStatus"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="Connected"-->
+            <!--                    android:textColor="@color/green"-->
+            <!--                    android:textSize="12sp"/>-->
+            <!--            </LinearLayout>-->
 
             <!-- Add New Device Link -->
+
             <TextView
-                android:id="@+id/addNewDevice"
+                android:id="@+id/txtMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Connected"
+                android:textColor="@color/green"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select"
+                app:layout_constraintTop_toBottomOf="@+id/txtMessage"
+                app:layout_constraintLeft_toRightOf="@id/battrypercent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add New"
                 android:textColor="@color/blue"
-                android:textSize="14sp"/>
-        </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@id/txtMessage"
+                app:layout_constraintLeft_toRightOf="@+id/txtSelect"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <!-- Bar Chart -->

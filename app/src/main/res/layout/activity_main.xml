@@ -1,139 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
-    <!-- Spinners -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="396dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/orange"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
-                android:text="Canicalm"
-                android:textAlignment="textEnd"
-                android:textColor="@android:color/white"
-                android:textSize="44sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="255dp"
-                android:background="@color/orange"
-                android:text="Smart"
-                android:textColor="@android:color/white"
-                android:textSize="44sp" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@drawable/entrypic"
-                android:scaleType="centerCrop"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/orange">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="30dp"
-                    android:text="by"
-                    android:textColor="@color/black"
-                    android:textSize="26sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="30dp"
-                    android:text="Num' axes"
-                    android:textColor="@color/white"
-                    android:textSize="26sp" />
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:orientation="horizontal">
+    <!-- Select Language -->
     <TextView
+        android:id="@+id/tvSelectLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose a Dog"
+        android:text="Select Language"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingBottom="8dp"/>
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="3dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:prompt="@string/choose_dog"/>
-    </LinearLayout>
-
-
+        android:layout_marginTop="30dp" />
 
     <LinearLayout
+        android:id="@+id/layout_language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add a Dog"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:background="@drawable/spinner_background"
+        android:gravity="center_vertical">
 
         <ImageView
-            android:id="@+id/btnAdd"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/plus" />
+            android:id="@+id/img_language_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/en" />
 
+        <TextView
+            android:id="@+id/tv_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English"
+            android:textSize="16sp"
+            android:layout_marginEnd="10dp" />
+
+        <ImageView
+            android:id="@+id/img_language_dropdown"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/dropdownicon"
+            android:layout_marginLeft="200dp"/>
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/languageSpinner"
+    <TextView
+        android:id="@+id/tvSelectDevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Device"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp" />
+
+    <LinearLayout
+        android:id="@+id/layout_device"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="10dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:padding="8dp"/>
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:background="@drawable/spinner_background"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/img_device_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ecllipse" />
+
+        <TextView
+            android:id="@+id/tv_device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Device Name 1"
+            android:textSize="16sp"
+            android:layout_marginEnd="10dp" />
+
+        <ImageView
+            android:id="@+id/img_device_dropdown"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="80dp"
+            android:src="@drawable/dropdownicon"/>
 
 
+        <ImageView
+            android:id="@+id/btn_add_device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/addiocn"
+            android:layout_marginLeft="50dp"
+           />
+    </LinearLayout>
 
 
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Submit"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
 </LinearLayout>
+
+
+
+

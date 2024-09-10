@@ -15,6 +15,7 @@ import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.TextView
 
+
 class SettingActivity : AppCompatActivity() {
     private val daysOfWeek = arrayOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,6 +113,7 @@ class SettingActivity : AppCompatActivity() {
 
         btnBack.setOnClickListener {
             var intent = Intent(this, MainActivity::class.java)
+
             startActivity(intent)
         }
     }

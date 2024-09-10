@@ -12,4 +12,6 @@
         <item>Strong stimulation</item>
         <item>Beeps sounds only</item>
     </string-array>
+
+    <string name="select">Select Language</string>
 </resources>

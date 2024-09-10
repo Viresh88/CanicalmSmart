@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="@drawable/getstarted"
+    tools:context=".GetStarted">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="255dp"
+      android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/numaxesimg"
+        android:background="@color/white"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="45dp"/>
+
+    <TextView
+        android:layout_width="263dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins"
+        android:text="Canicalm Smart"
+        android:textColor="#262727"
+        android:textFontWeight="400"
+        android:textSize="32sp" />
+
+  <ImageView
+      android:id="@+id/btngetStarted"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="30dp"
+      android:src="@drawable/buttongetstarted"/>
+
+  </LinearLayout>
+
+</LinearLayout>

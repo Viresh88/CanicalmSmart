@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- res/drawable/seekbar_thumb.xml -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-  <item android:drawable="@drawable/slider_handle"
-      android:height="45dp"
-      android:width="35dp"/>
+  <item android:drawable="@drawable/seekthumb"
+      android:height="21dp"
+      android:width="21dp"/>
 </layer-list>

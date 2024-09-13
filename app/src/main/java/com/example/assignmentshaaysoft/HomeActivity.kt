@@ -5,21 +5,14 @@ import android.content.Intent
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.google.android.material.progressindicator.CircularProgressIndicator
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var collarConnectionStatus: TextView
@@ -58,6 +51,30 @@ class HomeActivity : AppCompatActivity() {
 
         barChart.data = data
         barChart.invalidate() // Refresh chart
+
+        //Handle navigation
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    // Home screen logic
+                    true
+                }
+                R.id.bark_history -> {
+                    // Bark history logic
+                    val intent = Intent(this, BarkHistory::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.settings -> {
+                    // Settings screen logic
+                    val intent = Intent(this, SettingActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
 }

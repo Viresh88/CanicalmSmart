@@ -11,4 +11,9 @@
     <color name="gray">#B0B0B0</color>
     <color name="nav_item_active">#FFA500</color>
     <color name="nav_item_inactive">#808080</color>
+
+    <color name="time_slot_selected">#4CAF50</color> <!-- Green for selected -->
+    <color name="time_slot_unselected">#FFFFFF</color> <!-- White for unselected -->
+    <color name="time_slot_text">#000000</color> <!-- Black text color -->
 </resources>
+

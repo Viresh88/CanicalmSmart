@@ -1,6 +1,63 @@
 <resources>
     <string name="app_name">AssignmentShaaySoft</string>
     <string name="choose_dog">Choose a Dog</string>
+        <string name="CS000001">Next</string>
+        <string name="CS000002">I choose a dog</string>
+        <string name="CS000003">I add a dog</string>
+        <string name="CS000004">Details</string>
+        <string name="CS000005">Today</string>
+        <string name="CS000006">Progressive stimulation</string>
+        <string name="CS000007">Detected</string>
+        <string name="CS000008">Warned</string>
+        <string name="CS000009">Corrected</string>
+        <string name="CS000010">Detections</string>
+        <string name="CS000011">Warned</string>
+        <string name="CS000012">Corrections</string>
+        <string name="CS000013">Barking history</string>
+        <string name="CS000014">Detections</string>
+        <string name="CS000015">Warning</string>
+        <string name="CS000016">Static stimulation</string>
+        <string name="CS000017">Settings</string>
+        <string name="CS000018">Level of detection</string>
+        <string name="CS000019">Progressive stimulation</string>
+        <string name="CS000020">Beep sounds only</string>
+        <string name="CS000021">Light stimulation</string>
+        <string name="CS000022">Strong stimulation</string>
+        <string name="CS000023">Please activate the Bluetooth of your device</string>
+        <string name="CS000024">Collar search in progress</string>
+        <string name="CS000025">Collar not detected</string>
+        <string name="CS000026">Refer to the manual to start it</string>
+        <string name="CS000027">Enter your pet\'s name</string>
+        <string name="CS000028">Please enter a name</string>
+        <string name="CS000029">Connection with the collar lost</string>
+        <string name="CS000030">Update the clock of the collar</string>
+        <string name="CS000031">No data for the selected day</string>
+        <string name="CS000032">Delete the collar</string>
+        <string name="CS000033">Delete</string>
+        <string name="CS000034">Cancel</string>
+        <string name="CS000035">All data</string>
+        <string name="CS000036">will be deleted</string>
+        <string name="CS000037">Delete anyway</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+
+
+
+    <string name="text_bluetooth">Activate Bluetooth and make sure that the Bluetooth of your Canicom GPS remote control is also activated</string>
+    <string name="analyze">Search</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="connected">Connected</string>
+    <string name="connect_fail">Connect fail</string>
+    <string name="device_is_not_connected">Device not connected</string>
+    <string name="connecting">Connexion…</string>
+    <string name="canicomgps_whats_to_pair_with_your_smartphone_enter_the_pairing_password">calcalm  whats to add with your smartphone. Enter the dog name</string>
+    <string name="psw_error">error password</string>
+    <string name="disconnect">Disconnected</string>
+    <string name="already_connect">You are already logged in</string>
+    <string name="loading">Loading…</string>
+    <string name="blue_not_supported">Bluetooth not supported</string>
+
+
     <string-array name="dropdown_items">
         <item>Choose a Dog</item>
         <item>Demo</item>

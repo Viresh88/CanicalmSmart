@@ -50,10 +50,12 @@ dependencies {
     implementation ("androidx.room:room-ktx:2.6.1")
 
 
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.6")
 
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.5")
+
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")
+
 
     ksp("androidx.room:room-compiler:2.6.1")
 
@@ -84,7 +86,7 @@ dependencies {
 
 
         implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0") // Required for Transformations
-        implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1") // Optional for Kotlin LiveData extensions
+
 
 
 

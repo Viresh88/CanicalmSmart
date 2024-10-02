@@ -241,6 +241,10 @@ class BluetoothActivity : AppCompatActivity() , BluetoothEventCallback {
         TODO("Not yet implemented")
     }
 
+    override fun insertDataIntoDB(timestampMillis: Long, sanction: Int) {
+       //
+    }
+
 
     private fun associateDevice(name: String, device: BluetoothDevice) {
         BluetoothManagerClass.connect(device.address)

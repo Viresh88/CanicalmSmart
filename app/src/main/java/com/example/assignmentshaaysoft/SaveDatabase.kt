@@ -9,12 +9,14 @@ import com.numaxes.canicomgps.database.dao.DeviceDao
 
 
 
-@Database(entities = [Dog::class, Device::class], version = 2, exportSchema = false)
+@Database(entities = [Dog::class, Device::class,Event::class], version = 5, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class SaveDatabase : RoomDatabase() {
 
     abstract fun dogDao(): DogDao?
     abstract fun deviceDao() : DeviceDao?
+
+    abstract fun EventDao() : EventDao
 
 
     companion object {
@@ -25,7 +27,6 @@ abstract class SaveDatabase : RoomDatabase() {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(context.applicationContext,
                     SaveDatabase::class.java, "MyDatabase")
-                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance

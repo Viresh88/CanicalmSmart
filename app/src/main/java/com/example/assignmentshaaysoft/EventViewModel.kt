@@ -14,7 +14,8 @@ class EventViewModel(private val repository: EventRepository) : ViewModel() {
             val minTime = midnightTimestamp + timeZoneOffset
             val maxTime = minTime + 24 * 3600 * 1000
 
-            val events = repository.getEventsForDay(dogId, minTime, maxTime)
+            val events = repository.getEventsForDay("test",minTime,maxTime)
+           // val events = repository.getEvents("D123")
             val processedData = processEvents(events)
             callback(processedData)
         }
@@ -32,6 +33,22 @@ class EventViewModel(private val repository: EventRepository) : ViewModel() {
             }
         }
         return data.toList()
+    }
+
+    fun applySanction(time: Long, newPenalization: Int) {
+        viewModelScope.launch {
+            // Update the event's penalization
+            val newEvent = Event(
+                dogId = "test",
+                eventTimestamp = time,
+                eventPenalization = newPenalization
+            )
+
+
+
+
+            repository.insertEvent(newEvent)
+        }
     }
 
     fun getMidnightTimestamp(timestamp: Long): Long {

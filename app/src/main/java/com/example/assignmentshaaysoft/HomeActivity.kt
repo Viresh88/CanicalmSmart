@@ -1,6 +1,7 @@
 package com.example.assignmentshaaysoft
 
 import android.app.DatePickerDialog
+import android.bluetooth.BluetoothDevice
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -9,14 +10,21 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.example.assignmentshaaysoft.bluetooth.BluetoothEventCallback
+import com.example.assignmentshaaysoft.bluetooth.BluetoothManagerClass
 import com.google.android.material.progressindicator.CircularProgressIndicator
+import kotlinx.coroutines.launch
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), BluetoothEventCallback {
     private lateinit var circularProgressIndicator: CircularProgressIndicator
     private lateinit var progressText: TextView
-    private val viewModel: EventViewModel by viewModels()
+
+    private lateinit var eventViewModel: EventViewModel
+    private lateinit var eventRepository: EventRepository
+
 
     private lateinit var detectedCount : TextView
     private lateinit var warnedCount : TextView
@@ -27,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         val btnBack : ImageView = findViewById(R.id.btnBack)
-
+        BluetoothManagerClass.setBluetoothManagerListener(this)
         val pawIcon = findViewById<ImageView>(R.id.pawIcon)
         pawIcon.setOnClickListener {
             toggleIconVisibility()
@@ -42,15 +50,30 @@ class HomeActivity : AppCompatActivity() {
         val txtDogName = findViewById<TextView>(R.id.txtDogName)
         val imgCalender = findViewById<ImageView>(R.id.imgCalender)
         val datetxtView = findViewById<TextView>(R.id.datetxtView)
-        val detectedCount = findViewById<TextView>(R.id.detectedCount)
-        val warnedCount = findViewById<TextView>(R.id.warnedCount)
-        val correctedCount = findViewById<TextView>(R.id.correctedCount)
+         detectedCount = findViewById<TextView>(R.id.detectedCount)
+         warnedCount = findViewById<TextView>(R.id.warnedCount)
+         correctedCount = findViewById<TextView>(R.id.correctedCount)
 
-        val dogId = "dog123"
-        val timestamp = System.currentTimeMillis()
-        viewModel.getDayDataFromDB(timestamp, dogId) { hourlyData ->
-            updateUI(hourlyData)
+        val eventDao = SaveDatabase.getInstance(this).EventDao()  // Make sure this is correctly set up in your Application class
+        eventRepository = EventRepository(eventDao)
+
+        // Initialize the ViewModel using the factory
+        val factory = EventViewModelFactory(eventRepository)
+        eventViewModel = ViewModelProvider(this, factory).get(EventViewModel::class.java)
+
+        // Now use the ViewModel as needed
+        val timestamp: Long = System.currentTimeMillis()
+        val dogId: String = "yourDogId"
+
+        lifecycleScope.launch {
+            eventViewModel.getDayDataFromDB(timestamp, dogId) { hourlyData ->
+                updateUI(hourlyData)
+            }
         }
+
+
+
+
 
         val dogName = intent.getStringExtra("DOG_NAME")
         if (!dogName.isNullOrEmpty()) {
@@ -108,6 +131,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
+
+
     private fun toggleIconVisibility() {
         val iconLayout = findViewById<LinearLayout>(R.id.iconLayout)
 
@@ -118,6 +143,46 @@ class HomeActivity : AppCompatActivity() {
             iconLayout.visibility = View.VISIBLE
         }
     }
+
+    override fun onScanning(bluetoothDevice: BluetoothDevice) {
+        TODO("Not yet implemented")
     }
+
+    override fun onScanStarted() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onScanFinished() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onStartConnect(mac: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onConnectSuccess(bleDevice: BluetoothDevice?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onConnectDeviceSuccess(bleDevice: BluetoothDevice?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPasswordIncorrect() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onScanFailed(errorCode: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun insertDataIntoDB(timestampMillis: Long, sanction: Int) {
+        eventViewModel.applySanction(timestampMillis, sanction)
+    }
+
+    override fun showDeviceAssociationDialog(device: BluetoothDevice?) {
+        TODO("Not yet implemented")
+    }
+}
 
 

@@ -19,6 +19,7 @@ import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import com.example.assignmentshaaysoft.Dog
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -202,6 +203,7 @@ object BluetoothManagerClass {
                     charUuidProg1 -> handleProgram1(characteristic)
                     charUuidProg2 -> handleProgram2(characteristic)
                     charUuidAboiement -> handleAboiementNotification(characteristic)
+                    characteristicUUIDNotify -> handleDataNotificationEventBLE(characteristic)
 
                 }
 
@@ -219,12 +221,66 @@ object BluetoothManagerClass {
                     charUuidProg1 -> characteristic?.let { handleProgram1(it) }
                     charUuidProg2 -> characteristic?.let { handleProgram2(it) }
                     charUuidAboiement -> characteristic?.let { handleAboiementNotification(it) }
+                    characteristicUUIDNotify -> characteristic?.let {
+                        handleDataNotificationEventBLE(
+                            it
+                        )
+                    }
                     
                 }
             }
         }
     }
 
+    private fun handleDataNotificationEventBLE(characteristic: BluetoothGattCharacteristic) {
+        val data = characteristic.value
+        GlobalScope.launch(Dispatchers.Main) {
+            // Handle BLE data processing
+            addEventToLog(data)
+        }
+    }
+
+    fun addEventToLog(data: ByteArray) {
+        // Trigger BLE communication animations (stub for your BLE status UI updates)
+       // updateConnectionStatusIcon()
+
+        // Reading the data and interpreting it
+        val dataArray = data.toUByteArray()
+
+        // Converting FAT32 timestamp to date (received in UTC)
+        val timestamp = (dataArray[1].toInt() shl 24) +
+                (dataArray[2].toInt() shl 16) +
+                (dataArray[3].toInt() shl 8) +
+                dataArray[4].toInt()
+
+        val sec = (timestamp and 0x1f) shl 1
+        val min = (timestamp and 0x7e0) shr 5
+        val hr = (timestamp and 0xf800) shr 11
+        val day = (timestamp and 0x1f0000) shr 16
+        val month = (timestamp and 0x1e00000) shr 21
+        val year = (timestamp and 0xfe000000.toInt()) shr 25
+
+        // Reading the type of sanction
+        val sanction = dataArray[0].toInt()
+
+        // Converting the timestamp to Date object with mobile's time zone
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.YEAR, year + 1980)
+        calendar.set(Calendar.MONTH, month - 1)
+        calendar.set(Calendar.DAY_OF_MONTH, day)
+        calendar.set(Calendar.HOUR_OF_DAY, hr)
+        calendar.set(Calendar.MINUTE, min)
+        calendar.set(Calendar.SECOND, sec)
+
+        val date = calendar.time
+        val timestampMillis = date.time
+
+        // Inserting data into the database (Stub for DB insertion logic)
+        listener?.insertDataIntoDB(timestampMillis, sanction)
+
+        // Logging the event (you could replace this with Android logging if needed)
+        println("Notification 4E756D27-4178-6573-0001-000000000004 $dataArray")
+    }
 
 
 

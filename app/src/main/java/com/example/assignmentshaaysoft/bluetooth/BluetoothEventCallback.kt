@@ -18,6 +18,8 @@ interface BluetoothEventCallback {
 
     fun onScanFailed(errorCode: Int)
 
+    fun insertDataIntoDB(timestampMillis : Long, sanction: Int)
+
     fun showDeviceAssociationDialog(device: BluetoothDevice?)
 
 }

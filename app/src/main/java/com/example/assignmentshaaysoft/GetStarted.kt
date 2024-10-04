@@ -11,7 +11,7 @@ class GetStarted : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_started)
-        val btngetStarted : ImageView = findViewById(R.id.btngetStarted)
+        val btngetStarted : Button = findViewById(R.id.btngetStarted)
         btngetStarted.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

@@ -26,8 +26,10 @@
         android:layout_marginTop="32dp"
         android:gravity="center"
         android:text="Bark History"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/poppins"
+        android:textSize="22sp"
+        android:textFontWeight="400"
+        android:textColor="#4A4A4A"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/backicon"
         app:layout_constraintTop_toTopOf="parent" />

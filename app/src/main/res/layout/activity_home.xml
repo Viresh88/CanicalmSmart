@@ -6,15 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <!-- Header -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Canicalm Smart"
         android:textSize="24sp"
+        android:lineHeight="36dp"
         android:textStyle="bold"
-        android:textColor="@color/orange"
+        android:fontFamily="@font/poppins"
+        android:textFontWeight="400"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:paddingStart="16dp"
@@ -31,7 +31,7 @@
         android:layout_marginTop="10dp"
         android:paddingEnd="16dp"/>
 
-    <!-- Tommy Collar CardView -->
+
     <androidx.cardview.widget.CardView
         android:id="@+id/collarCardView"
         android:layout_width="0dp"
@@ -50,7 +50,6 @@
             android:orientation="horizontal"
             android:padding="16dp">
 
-            <!-- Collar Image -->
             <ImageView
                 android:id="@+id/collarImage"
                 android:layout_width="48dp"
@@ -66,6 +65,7 @@
                 android:text="Tommy Collar"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppins"
                 app:layout_constraintLeft_toRightOf="@id/collarImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,6 +83,8 @@
                 android:layout_height="18dp"
                 android:text="100%"
                 android:textSize="10sp"
+                android:layout_marginLeft="3dp"
+                android:fontFamily="@font/poppins"
                 app:layout_constraintLeft_toRightOf="@id/batteryimg"
                 app:layout_constraintTop_toBottomOf="@id/collarName"/>
 
@@ -92,8 +94,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Connected"
+                android:padding="5dp"
                 android:textColor="@color/green"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -101,6 +104,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select"
+                android:fontFamily="@font/poppins"
+                android:textSize="12sp"
+                android:textColor="#878787"
+                android:textFontWeight="400"
+                android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@+id/txtMessage"
                 app:layout_constraintLeft_toRightOf="@id/battrypercent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -110,10 +118,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add New"
-                android:textColor="@color/blue"
+                android:textColor="#1170C7"
+                android:fontFamily="@font/poppins"
+                android:textFontWeight="400"
+                android:textSize="12sp"
+                android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@id/txtMessage"
                 app:layout_constraintLeft_toRightOf="@+id/txtSelect"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
 
@@ -121,7 +133,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Bar Chart -->
+
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChart"
         android:layout_width="0dp"

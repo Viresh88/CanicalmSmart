@@ -2,9 +2,13 @@ package com.example.assignmentshaaysoft
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Color
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.BarChart
@@ -19,6 +23,27 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+       val titleTextView = findViewById<TextView>(R.id.titleTextView)
+        // The text you want to display
+        val text = "Canicalm Smart"
+
+        // Create a SpannableString from the text
+        val spannable = SpannableString(text)
+
+        // Apply a different color to "Canicalm"
+        val canicalmColor = Color.parseColor("#4A4A4A")
+        spannable.setSpan(
+            ForegroundColorSpan(canicalmColor), 0, 8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Apply a different color to "Smart"
+        val smartColor = Color.parseColor("#F89E24")
+        spannable.setSpan(
+            ForegroundColorSpan(smartColor), 9, 14, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Set the spannable text to the TextView
+        titleTextView.text = spannable
 
         collarConnectionStatus = findViewById(R.id.txtMessage)
 

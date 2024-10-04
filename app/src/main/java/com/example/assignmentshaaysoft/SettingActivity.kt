@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class SettingActivity : AppCompatActivity() {
@@ -44,6 +45,29 @@ class SettingActivity : AppCompatActivity() {
         setTimeLayout.setOnClickListener {
             val intent = Intent(this, SetActiveTime::class.java)
             startActivity(intent)
+        }
+
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    // Home screen logic
+                    true
+                }
+                R.id.bark_history -> {
+                    // Bark history logic
+                    val intent = Intent(this, BarkHistory::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.settings -> {
+                    // Settings screen logic
+                    val intent = Intent(this, SettingActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
         }
     }
 
@@ -85,5 +109,7 @@ class SettingActivity : AppCompatActivity() {
 
         popupMenu.show()
     }
+
+
 
 }

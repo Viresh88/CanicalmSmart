@@ -1,20 +1,17 @@
 package com.example.assignmentshaaysoft
 
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Color
-import android.icu.util.Calendar
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -49,40 +46,15 @@ class HomeActivity : AppCompatActivity() {
 
         // Simulate connectivity
         checkCollarConnection()
-        setupBarChart()
-    }
+        setupProgressBar(detection = 15, warned = 20, corrected = 15)
 
-    private fun checkCollarConnection() {
-        val connected = true // Mocked value
-        if (connected) {
-            collarConnectionStatus.text = "Connected"
-            collarConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.green))
-        } else {
-            collarConnectionStatus.text = "Disconnected"
-            collarConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.corrected))
-        }
-    }
-    private fun setupBarChart() {
-        val barChart = findViewById<BarChart>(R.id.barChart)
-
-        val entries = listOf(
-            BarEntry(0f, 15f),  // Detection
-            BarEntry(1f, 20f),  // Warned
-            BarEntry(2f, 15f)   // Corrected
-        )
-
-        val barDataSet = BarDataSet(entries, "Detection")
-        val data = BarData(barDataSet)
-
-        barChart.data = data
-        barChart.invalidate() // Refresh chart
-
-        //Handle navigation
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
                     // Home screen logic
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.bark_history -> {
@@ -101,6 +73,70 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun checkCollarConnection() {
+        val connected = true // Mocked value
+        if (connected) {
+            collarConnectionStatus.text = "Connected"
+            collarConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.green))
+        } else {
+            collarConnectionStatus.text = "Disconnected"
+            collarConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.corrected))
+        }
+    }
+
+
+    private fun setupProgressBar(detection: Int, warned: Int, corrected: Int) {
+        val progressBar: ProgressBar = findViewById(R.id.progressBar)
+        progressBar.post {
+            updateProgressBar(progressBar, detection, warned, corrected)
+            updateTextColorsAndValues(detection, warned, corrected)
+        }
+    }
+
+
+        private fun updateTextColorsAndValues(detection: Int, warned: Int, corrected: Int) {
+            val tvDetection: TextView = findViewById(R.id.tvDetection)
+            val tvWarned: TextView = findViewById(R.id.tvWarned)
+            val tvCorrected: TextView = findViewById(R.id.tvCorrected)
+
+            tvDetection.text = "Detection\n$detection"
+            tvWarned.text = "Warned\n$warned"
+            tvCorrected.text = "Corrected\n$corrected"
+
+            // Set text colors to match progress bar segments
+            tvDetection.setTextColor(resources.getColor(R.color.colorDetection))
+            tvWarned.setTextColor(resources.getColor(R.color.colorWarned))
+            tvCorrected.setTextColor(resources.getColor(R.color.colorCorrected))
+        }
+
+
+
+
+
+
+        private fun updateProgressBar(progressBar: ProgressBar, detection: Int, warned: Int, corrected: Int) {
+        val total = (detection + warned + corrected).toFloat()  // Avoid division by zero
+        if (total == 0f) return  // If total is zero, exit to avoid division by zero
+
+        val maxProgressWidth = progressBar.width  // Now this should correctly fetch the width
+
+        val detectionEndPoint = (detection / total) * maxProgressWidth
+        val warnedEndPoint = ((detection + warned) / total) * maxProgressWidth
+
+        val layerDrawable = progressBar.progressDrawable as LayerDrawable
+        val detectionDrawable = layerDrawable.findDrawableByLayerId(R.id.detection_segment) as GradientDrawable
+        val warnedDrawable = layerDrawable.findDrawableByLayerId(R.id.warned_segment) as GradientDrawable
+        val correctedDrawable = layerDrawable.findDrawableByLayerId(R.id.corrected_segment) as GradientDrawable
+
+        detectionDrawable.setBounds(0, 0, detectionEndPoint.toInt(), progressBar.height)
+        warnedDrawable.setBounds(detectionEndPoint.toInt(), 0, warnedEndPoint.toInt(), progressBar.height)
+        correctedDrawable.setBounds(warnedEndPoint.toInt(), 0, progressBar.width, progressBar.height)
+
+        progressBar.invalidate()
+    }
+
+
 
 }
 

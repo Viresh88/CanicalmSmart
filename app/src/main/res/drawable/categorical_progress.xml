@@ -1,0 +1,30 @@
+<!-- Drawable with a placeholder that will be manipulated in code -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background of the ProgressBar -->
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#E0E0E0" />
+        </shape>
+    </item>
+
+    <!-- Segment for Detection -->
+    <item android:id="@+id/detection_segment">
+        <shape>
+            <solid android:color="#4285F4" /> <!-- Blue for Detection -->
+        </shape>
+    </item>
+
+    <!-- Segment for Warned -->
+    <item android:id="@+id/warned_segment">
+        <shape>
+            <solid android:color="#FFA726" /> <!-- Orange for Warned -->
+        </shape>
+    </item>
+
+    <!-- Segment for Corrected -->
+    <item android:id="@+id/corrected_segment">
+        <shape>
+            <solid android:color="#34A853" /> <!-- Green for Corrected -->
+        </shape>
+    </item>
+</layer-list>

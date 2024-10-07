@@ -1,0 +1,17 @@
+<!-- res/drawable/corrected_progress.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="12dp" />
+            <solid android:color="#D6D6D6" /> <!-- Same background color -->
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="12dp" />
+                <solid android:color="#34A853" /> <!-- Green progress color -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>

@@ -2,12 +2,18 @@ package com.example.assignmentshaaysoft
 
 
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Display
+import android.view.View
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.HorizontalScrollView
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +33,9 @@ class BarkHistory : AppCompatActivity() {
     private lateinit var detectionButton: Button
     private lateinit var warningButton: Button
     private lateinit var correctionButton: Button
+    private lateinit var txtToday :TextView
+    private lateinit var imgCalendar : ImageView
+    private lateinit var backButton : ImageView
 
     // Dummy data for the history list
     private val historyList = listOf(
@@ -49,6 +58,59 @@ class BarkHistory : AppCompatActivity() {
         detectionButton = findViewById(R.id.detectionButton)
         warningButton = findViewById(R.id.warningButton)
         correctionButton = findViewById(R.id.correctionButton)
+        txtToday  = findViewById(R.id.txt_today)
+        imgCalendar = findViewById(R.id.calendarIcon)
+        backButton = findViewById(R.id.backButton)
+
+
+
+        val chartAll: HorizontalScrollView = findViewById(R.id.chart_all)
+        val chartDetection: HorizontalScrollView = findViewById(R.id.chart_detection)
+        val chartWarning: HorizontalScrollView = findViewById(R.id.chart_warning)
+        val chartCorrection: HorizontalScrollView = findViewById(R.id.chart_correction)
+
+        val main_button: LinearLayout = findViewById(R.id.main_button)
+
+
+        val barChartDetection: BarChart = findViewById(R.id.bar_chart_Detection)
+        val barChartWarning: BarChart = findViewById(R.id.bar_chart_warning)
+        val barChartCorrection: BarChart = findViewById(R.id.bar_chart_correction)
+
+        // Set up dummy data for each BarChart
+        setUpBarChart(barChartDetection, getDummyData(), "Detection Data")
+        setUpBarChart(barChartWarning, getDummyData(), "Warning Data")
+        setUpBarChart(barChartCorrection, getDummyData(), "Correction Data")
+        setupBarChart("All")
+
+
+        imgCalendar.setOnClickListener{
+            val intent = Intent(this, CalendarActivity::class.java)
+            startActivity(intent)
+        }
+
+        chartAll.visibility = View.VISIBLE
+        chartDetection.visibility = View.GONE
+        chartWarning.visibility = View.GONE
+        chartCorrection.visibility = View.GONE
+
+
+
+        txtToday.setOnClickListener {
+            if (chartAll.visibility == View.VISIBLE) {
+                chartAll.visibility = View.GONE
+                main_button.visibility = View.GONE
+                chartDetection.visibility = View.VISIBLE
+                chartWarning.visibility = View.VISIBLE
+                chartCorrection.visibility = View.VISIBLE
+            } else {
+                main_button.visibility = View.VISIBLE
+                chartAll.visibility = View.VISIBLE
+                chartDetection.visibility = View.GONE
+                chartWarning.visibility = View.GONE
+                chartCorrection.visibility = View.GONE
+            }
+        }
+
 
         // Set up the RecyclerView with the initial data
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -65,22 +127,129 @@ class BarkHistory : AppCompatActivity() {
         val chartWidth = screenWidth + 1000 // You can adjust this value as needed
         barChart.layoutParams.width = chartWidth
         barChart.requestLayout() // Request layout update
-
-        // Add your data and customize the chart as needed
-        // ...
-
-        // Refresh the chart
         barChart.invalidate()
 
+
+        barChartDetection.layoutParams.width = chartWidth
+        barChartDetection.requestLayout() // Request layout update
+        barChartDetection.invalidate()
+
+
+        barChartWarning.layoutParams.width = chartWidth
+        barChartWarning.requestLayout() // Request layout update
+        barChartWarning.invalidate()
+
+
+        barChartCorrection.layoutParams.width = chartWidth
+        barChartCorrection.requestLayout() // Request layout update
+        barChartCorrection.invalidate()
+
         // Set up the bar chart with 24-hour time data
-        setupBarChart("All")
+
+
 
         // Button listeners for filtering the RecyclerView and BarChart data
         allButton.setOnClickListener { filterData("All") }
         detectionButton.setOnClickListener { filterData("Detection") }
         warningButton.setOnClickListener { filterData("Warning") }
         correctionButton.setOnClickListener { filterData("Correction") }
+
+
+        backButton.setOnClickListener{
+            onBackPressed()
+        }
     }
+
+    private fun getDummyData(): List<BarEntry> {
+        val entries = ArrayList<BarEntry>()
+        for (i in 1..5) { // Generating 5 dummy entries
+            entries.add(BarEntry(i.toFloat(), (10..50).random().toFloat()))
+        }
+        return entries
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
+
+    // Function to set up a BarChart with a given data set
+    private fun setUpBarChart(barChart: BarChart, entries: List<BarEntry>, label: String) {
+        val detectionEntries = arrayListOf<BarEntry>()
+        val warningEntries = arrayListOf<BarEntry>()
+        val correctionEntries = arrayListOf<BarEntry>()
+
+        // Add dummy data for 24 1-hour intervals based on the selected filter
+        for (i in 0..23) { // 24 intervals for 24 hours
+            val detectionValue =  (0..50).random().toFloat()
+            val warningValue =  (0..30).random().toFloat()
+            val correctionValue =  (0..20).random().toFloat()
+
+            detectionEntries.add(BarEntry(i.toFloat(), detectionValue)) // Set detection bar entry for the group
+            warningEntries.add(BarEntry(i.toFloat(), warningValue))     // Set warning bar entry for the group
+            correctionEntries.add(BarEntry(i.toFloat(), correctionValue)) // Set correction bar entry for the group
+        }
+
+        // Create separate data sets for each category
+        val detectionSet = BarDataSet(detectionEntries, "Detection").apply {
+            color = Color.parseColor("#4CAF50") // Green color for detection
+            setDrawValues(false) // Disable value text on top of bars
+        }
+        val warningSet = BarDataSet(warningEntries, "Warning").apply {
+            color = Color.parseColor("#FFC107") // Yellow color for warning
+            setDrawValues(false) // Disable value text on top of bars
+        }
+        val correctionSet = BarDataSet(correctionEntries, "Correction").apply {
+            color = Color.parseColor("#FF5722") // Red color for correction
+            setDrawValues(false) // Disable value text on top of bars
+        }
+
+        // Create a BarData object using all data sets
+
+        if(label == "Detection Data"){
+            val data = BarData(detectionSet)
+            data.barWidth = 0.5f // Width of each bar in a group
+            barChart.data = data
+        }else if(label == "Warning Data"){
+            val data = BarData(warningSet)
+            data.barWidth = 0.5f // Width of each bar in a group
+            barChart.data = data
+        }else{
+            val data = BarData(correctionSet)
+            data.barWidth = 0.5f // Width of each bar in a group
+            barChart.data = data
+        }
+        //val data = BarData(detectionSet, warningSet, correctionSet)
+
+        barChart.setFitBars(true)
+
+        // Set group and bar spacing
+//        val groupSpace = 1.0f
+//        val barSpace = 0.1f
+//
+//
+//        barChart.groupBars(0f, groupSpace, barSpace) // Set group bars with specified spacing
+
+        // X-Axis Customization
+        val xAxis = barChart.xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.valueFormatter = IndexAxisValueFormatter(getGroupLabels()) // Custom labels
+        xAxis.granularity = 1f // One label per group
+        xAxis.labelCount = 12 // Show 24 labels for 24 groups
+        xAxis.setDrawGridLines(false) // Disable grid lines
+        xAxis.setCenterAxisLabels(true) // Center the labels within each group
+
+        // Calculate group width and set axis minimum to center the first group
+
+        xAxis.axisMinimum = 0f
+
+        // Y-Axis Customization
+        barChart.axisLeft.axisMinimum = 0f
+        barChart.axisRight.isEnabled = false
+
+        // Refresh the chart with the new settings
+        barChart.invalidate()
+    }
+
     // Function to setup the BarChart with category-specific data and 1-hour time slots
     private fun setupBarChart(filterType: String) {
         val detectionEntries = arrayListOf<BarEntry>()

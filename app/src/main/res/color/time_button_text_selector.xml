@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Text color for selected button state -->
+    <item android:state_selected="true" android:color="#FFFAFA" />
+
+    <!-- Text color for unselected button state -->
+    <item android:color="#4A4A4A" />
+</selector>

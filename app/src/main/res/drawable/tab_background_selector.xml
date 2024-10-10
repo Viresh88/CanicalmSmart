@@ -1,0 +1,30 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <layer-list>
+            <!-- Shadow Layer -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#0000002E" /> <!-- Shadow color with 18% opacity -->
+                    <corners android:radius="5dp" />
+                </shape>
+            </item>
+            <!-- Gradient Background Layer -->
+            <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
+                <shape android:shape="rectangle">
+                    <gradient
+                        android:angle="180"
+                        android:startColor="#232323"
+                        android:endColor="#535353"
+                        android:type="linear" />
+                    <corners android:radius="5dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:state_selected="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white" /> <!-- White background for unselected tab -->
+            <corners android:radius="5dp" /> <!-- Rounded corners for unselected tab -->
+        </shape>
+    </item>
+</selector>

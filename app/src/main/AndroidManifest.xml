@@ -26,6 +26,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AssignmentShaaySoft"
         tools:targetApi="31">
+
+        <activity
+            android:name=".CalendarActivity"
+            android:exported="false" />
+
         <activity
             android:name=".BarkHistory"
             android:exported="false" />
@@ -38,6 +43,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+<activity android:name=".DogListActivity" android:exported="false"></activity>
         <activity
             android:name=".ReportActivity"
             android:exported="false" />

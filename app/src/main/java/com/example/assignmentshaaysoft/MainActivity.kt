@@ -2,13 +2,15 @@ package com.example.assignmentshaaysoft
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
-import com.example.assignmentshaaysoft.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +50,8 @@ class MainActivity : AppCompatActivity() {
         // Add Device Button
         addDeviceButton.setOnClickListener {
             Toast.makeText(this, "Add new device clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, DogListActivity::class.java)
+            startActivity(intent)
         }
 
         // Submit Button

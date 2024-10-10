@@ -3,36 +3,74 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/dialog_background"
+    android:layout_gravity="center">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
+    <!-- Dog Image with Edit Icon -->
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible" />
+        android:layout_gravity="center_horizontal"
+        android:padding="16dp">
 
+        <!-- Dog Image -->
+        <ImageView
+            android:id="@+id/ivDogImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/circle_background"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dog_paw" />
+
+        <!-- Edit Icon Overlay -->
+        <ImageView
+            android:id="@+id/ivEditIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_edit"
+            android:layout_alignBottom="@id/ivDogImage"
+            android:layout_alignEnd="@id/ivDogImage"
+            android:layout_margin="4dp" />
+
+    </RelativeLayout>
+
+    <!-- Name Input Field -->
     <TextView
-        android:id="@+id/txtMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Searching for collar..."
-        android:textSize="16sp" />
+        android:text="Name of Dog"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp"
+        android:fontFamily="@font/poppins"
+        android:paddingBottom="4dp"
+        android:layout_gravity="start" />
 
     <EditText
         android:id="@+id/etDogName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Dog's Name"
-        android:visibility="gone"
-        android:layout_marginTop="16dp" />
+        android:hint="Enter Dog's Name"
+        android:background="@drawable/rounded_edittext"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray" />
 
+    <!-- Submit Button -->
     <Button
-        android:id="@+id/btnOk"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="OK"
-        android:visibility="gone"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:text="Submit"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:background="@drawable/submit_button_background"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/blue"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/border_bg"
+    android:padding="15dp">
+
+    <!-- Dog Image -->
+    <ImageView
+        android:id="@+id/ivDogImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/dog"
+        app:layout_constraintEnd_toStartOf="@+id/tvDogName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Dog Name -->
+    <TextView
+        android:id="@+id/tvDogName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins"
+        android:text="Dog Name"
+        android:textColor="#6f6f6f"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/ivDogImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Battery Level -->
+    <TextView
+        android:id="@+id/tvBatteryLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/ic_battery"
+        android:text="100%"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/ivDogImage"
+        app:layout_constraintTop_toBottomOf="@id/tvDogName" />
+
+    <!-- Online/Offline Status -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins"
+        android:text="Online"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvBatteryLevel"
+        app:layout_constraintStart_toEndOf="@id/tvBatteryLevel"
+        app:layout_constraintTop_toBottomOf="@+id/tvDogName" />
+
+    <!-- Edit Button -->
+    <ImageView
+        android:id="@+id/ivEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

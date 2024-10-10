@@ -4,63 +4,82 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".SetActiveTime">
 
-    <ImageButton
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/backicon"
-        android:contentDescription="Back"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_goneMarginStart="16dp" />
 
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Set Active Time"
-        android:textSize="22sp"
-        android:textFontWeight="400"
-        android:fontFamily="@font/poppins"
-        android:textColor="#4A4A4A"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnBack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginTop="16dp"/>
+        android:padding="16dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_goneMarginStart="16dp"
+        android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/about_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="About"
-        android:textSize="14sp"
-        android:gravity="end"
-        android:padding="8dp"
-        android:textColor="?android:textColorPrimary"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"/>
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back Button"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
+
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:text="Set Active Time"
+            android:textSize="22sp"
+            android:textFontWeight="400"
+            android:fontFamily="@font/poppins"
+            android:textColor="#4A4A4A"
+            />
+
+        <TextView
+            android:id="@+id/aboutIcon"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="About"
+            android:gravity="end"
+            android:fontFamily="@font/poppins"
+            android:textSize="12dp"
+            android:textAllCaps="false"
+            android:textFontWeight="400"
+            android:contentDescription="About Icon" />
+
+
+    </RelativeLayout>
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutDays"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/black"
-        app:tabTextColor="@color/gray"
-        app:tabIndicatorColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitle"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp">
+        app:layout_constraintStart_toStartOf="parent"
+        android:minHeight="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/title_bar"
+        app:tabBackground="@drawable/tab_background_selector"
+        app:tabIndicatorColor="@color/black"
+
+        app:tabIndicatorHeight="0dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextAppearance="@style/CustomTabText"
+        app:tabTextColor="@color/black">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabMon"
@@ -122,121 +141,142 @@
             android:id="@+id/btn_12am_1pm"
             style="@style/TimeSlotButton"
             android:text="12:00 AM\n1:00 PM"
-            android:backgroundTint="@color/white" />
+
+            android:background="@drawable/bg_time_normal"
+            />
 
         <Button
             android:id="@+id/btn_1pm_2pm"
             style="@style/TimeSlotButton"
             android:text="1:00 PM\n2:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+            />
 
         <Button
             android:id="@+id/btn_2pm_3pm"
             style="@style/TimeSlotButton"
             android:text="2:00 PM\n3:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+            />
 
         <Button
             android:id="@+id/btn_3pm_4pm"
             style="@style/TimeSlotButton"
             android:text="3:00 PM\n4:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+            />
 
         <Button
             android:id="@+id/btn_4pm_5pm"
             style="@style/TimeSlotButton"
             android:text="4:00 PM\n5:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_5pm_6pm"
             style="@style/TimeSlotButton"
             android:text="5:00 PM\n6:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_6pm_7pm"
             style="@style/TimeSlotButton"
             android:text="6:00 PM\n7:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_7pm_8pm"
             style="@style/TimeSlotButton"
+            android:background="@drawable/bg_time_normal"
             android:text="7:00 PM\n8:00 PM"
-            android:backgroundTint="@color/white" />
+             />
 
         <Button
             android:id="@+id/btn_8pm_9pm"
             style="@style/TimeSlotButton"
             android:text="8:00 PM\n9:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_9pm_10pm"
             style="@style/TimeSlotButton"
             android:text="9:00 PM\n10:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_10pm_11pm"
             style="@style/TimeSlotButton"
             android:text="10:00 PM\n11:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+           />
 
         <Button
             android:id="@+id/btn_11pm_12pm"
             style="@style/TimeSlotButton"
             android:text="11:00 PM\n12:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_12pm_13pm"
             style="@style/TimeSlotButton"
             android:text="13:00 PM\n1:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_13pm_14pm"
             style="@style/TimeSlotButton"
             android:text="13:00 PM\n14:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_14pm_15pm"
             style="@style/TimeSlotButton"
             android:text="14:00 PM\n15:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_16pm_17pm"
             style="@style/TimeSlotButton"
             android:text="16:00 PM\n17:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_17pm_18pm"
             style="@style/TimeSlotButton"
             android:text="17:00 PM\n18:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+            />
 
         <Button
             android:id="@+id/btn_18pm_19pm"
             style="@style/TimeSlotButton"
             android:text="18:00 PM\n19:00 PM"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/bg_time_normal"
+             />
 
         <Button
             android:id="@+id/btn_19pm_20pm"
             style="@style/TimeSlotButton"
+            android:background="@drawable/bg_time_normal"
             android:text="19:00 PM\n20:00 PM"
-            android:backgroundTint="@color/white" />
+             />
 
         <Button
             android:id="@+id/btn_20pm_21pm"
             style="@style/TimeSlotButton"
+            android:background="@drawable/bg_time_normal"
             android:text="20:00 PM\n21:00 PM"
-            android:backgroundTint="@color/white" />
+             />
 
     </GridLayout>
 

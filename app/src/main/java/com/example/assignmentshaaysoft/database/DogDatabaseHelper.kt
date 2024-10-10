@@ -54,7 +54,7 @@ class DogDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                 val id = getLong(getColumnIndexOrThrow(BaseColumns._ID))
                 val name = getString(getColumnIndexOrThrow(DogContract.DogEntry.COLUMN_NAME))
                 val collarAddress = getString(getColumnIndexOrThrow(DogContract.DogEntry.COLUMN_COLLAR_ADDRESS))
-                dogs.add(Dog(id,name, collarAddress))
+                //dogs.add(Dog(id,name, collarAddress))
             }
             close()
         }

@@ -1,143 +1,188 @@
 package com.example.assignmentshaaysoft
 
+import android.app.DatePickerDialog
+import android.bluetooth.BluetoothDevice
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.LayerDrawable
+import android.icu.util.Calendar
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
-import android.widget.ProgressBar
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.example.assignmentshaaysoft.bluetooth.BluetoothEventCallback
+import com.example.assignmentshaaysoft.bluetooth.BluetoothManagerClass
+import com.google.android.material.progressindicator.CircularProgressIndicator
+import kotlinx.coroutines.launch
+
+class HomeActivity : AppCompatActivity(), BluetoothEventCallback {
+    private lateinit var circularProgressIndicator: CircularProgressIndicator
+    private lateinit var progressText: TextView
+
+    private lateinit var eventViewModel: EventViewModel
+    private lateinit var eventRepository: EventRepository
 
 
-class HomeActivity : AppCompatActivity() {
-    private lateinit var collarConnectionStatus: TextView
+    private lateinit var detectedCount : TextView
+    private lateinit var warnedCount : TextView
+    private lateinit var correctedCount : TextView
+
+    var i = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-       val titleTextView = findViewById<TextView>(R.id.titleTextView)
-        // The text you want to display
-        val text = "Canicalm Smart"
+        val btnBack : ImageView = findViewById(R.id.btnBack)
+        BluetoothManagerClass.setBluetoothManagerListener(this)
+        val pawIcon = findViewById<ImageView>(R.id.pawIcon)
+        pawIcon.setOnClickListener {
+            toggleIconVisibility()
+        }
+         val settingIcon = findViewById<ImageView>(R.id.settingIcon)
 
-        // Create a SpannableString from the text
-        val spannable = SpannableString(text)
+        settingIcon.setOnClickListener {
+            val intent = Intent(this, SettingActivity::class.java)
+            startActivity(intent)
+        }
 
-        // Apply a different color to "Canicalm"
-        val canicalmColor = Color.parseColor("#4A4A4A")
-        spannable.setSpan(
-            ForegroundColorSpan(canicalmColor), 0, 8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
+        val txtDogName = findViewById<TextView>(R.id.txtDogName)
+        val imgCalender = findViewById<ImageView>(R.id.imgCalender)
+        val datetxtView = findViewById<TextView>(R.id.datetxtView)
+         detectedCount = findViewById<TextView>(R.id.detectedCount)
+         warnedCount = findViewById<TextView>(R.id.warnedCount)
+         correctedCount = findViewById<TextView>(R.id.correctedCount)
 
-        // Apply a different color to "Smart"
-        val smartColor = Color.parseColor("#F89E24")
-        spannable.setSpan(
-            ForegroundColorSpan(smartColor), 9, 14, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
+        val eventDao = SaveDatabase.getInstance(this).EventDao()  // Make sure this is correctly set up in your Application class
+        eventRepository = EventRepository(eventDao)
 
-        // Set the spannable text to the TextView
-        titleTextView.text = spannable
+        // Initialize the ViewModel using the factory
+        val factory = EventViewModelFactory(eventRepository)
+        eventViewModel = ViewModelProvider(this, factory).get(EventViewModel::class.java)
 
-        collarConnectionStatus = findViewById(R.id.txtMessage)
+        // Now use the ViewModel as needed
+        val timestamp: Long = System.currentTimeMillis()
+        val dogId: String = "yourDogId"
 
-        // Simulate connectivity
-        checkCollarConnection()
-        setupProgressBar(detection = 15, warned = 20, corrected = 15)
-
-        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.home -> {
-                    // Home screen logic
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                R.id.bark_history -> {
-                    // Bark history logic
-                    val intent = Intent(this, BarkHistory::class.java)
-                    startActivity(intent)
-                    true
-                }
-                R.id.settings -> {
-                    // Settings screen logic
-                    val intent = Intent(this, SettingActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
+        lifecycleScope.launch {
+            eventViewModel.getDayDataFromDB(timestamp, dogId) { hourlyData ->
+                updateUI(hourlyData)
             }
         }
+
+
+
+
+
+        val dogName = intent.getStringExtra("DOG_NAME")
+        if (!dogName.isNullOrEmpty()) {
+            txtDogName.text = dogName
+        } else{
+            txtDogName.text = "No dog selected"
+        }
+
+        imgCalender.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            // Create and show the DatePickerDialog
+            val datePickerDialog = DatePickerDialog(this,
+                { _, selectedYear, selectedMonth, selectedDay ->
+                    // Display the selected date in the TextView
+                    val selectedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
+                    datetxtView.text = selectedDate
+                }, year, month, day)
+
+            datePickerDialog.show()
+        }
+
+        val gauge = findViewById<SemiCircularGaugeView>(R.id.semiCircularGauge)
+        gauge.setProgress(90f)
+
+        val btnDetails : Button = findViewById(R.id.btnDetails)
+        btnDetails.setOnClickListener {
+            val intent = Intent(this, ReportActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnBack.setOnClickListener {
+            var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        }
+
+    private fun updateUI(hourlyData: List<HourlyData>) {
+        var detectedTotal = 0
+        var warnedTotal = 0
+        var correctedTotal = 0
+
+        hourlyData.forEach { data ->
+            detectedTotal += data.totals[0]
+            warnedTotal += data.totals[1]
+            correctedTotal += data.totals[2]
+        }
+
+        detectedCount.text = "Detected: $detectedTotal"
+        warnedCount.text = "Warned: $warnedTotal"
+        correctedCount.text = "Corrected: $correctedTotal"
     }
 
-    private fun checkCollarConnection() {
-        val connected = true // Mocked value
-        if (connected) {
-            collarConnectionStatus.text = "Connected"
-            collarConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.green))
+
+
+
+    private fun toggleIconVisibility() {
+        val iconLayout = findViewById<LinearLayout>(R.id.iconLayout)
+
+        // Toggle visibility
+        if (iconLayout.visibility == View.VISIBLE) {
+            iconLayout.visibility = View.INVISIBLE
         } else {
-            collarConnectionStatus.text = "Disconnected"
-            collarConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.corrected))
+            iconLayout.visibility = View.VISIBLE
         }
     }
 
-
-    private fun setupProgressBar(detection: Int, warned: Int, corrected: Int) {
-        val progressBar: ProgressBar = findViewById(R.id.progressBar)
-        progressBar.post {
-            updateProgressBar(progressBar, detection, warned, corrected)
-            updateTextColorsAndValues(detection, warned, corrected)
-        }
+    override fun onScanning(bluetoothDevice: BluetoothDevice) {
+        TODO("Not yet implemented")
     }
 
-
-        private fun updateTextColorsAndValues(detection: Int, warned: Int, corrected: Int) {
-            val tvDetection: TextView = findViewById(R.id.tvDetection)
-            val tvWarned: TextView = findViewById(R.id.tvWarned)
-            val tvCorrected: TextView = findViewById(R.id.tvCorrected)
-
-            tvDetection.text = "Detection\n$detection"
-            tvWarned.text = "Warned\n$warned"
-            tvCorrected.text = "Corrected\n$corrected"
-
-            // Set text colors to match progress bar segments
-            tvDetection.setTextColor(resources.getColor(R.color.colorDetection))
-            tvWarned.setTextColor(resources.getColor(R.color.colorWarned))
-            tvCorrected.setTextColor(resources.getColor(R.color.colorCorrected))
-        }
-
-
-
-
-
-
-        private fun updateProgressBar(progressBar: ProgressBar, detection: Int, warned: Int, corrected: Int) {
-        val total = (detection + warned + corrected).toFloat()  // Avoid division by zero
-        if (total == 0f) return  // If total is zero, exit to avoid division by zero
-
-        val maxProgressWidth = progressBar.width  // Now this should correctly fetch the width
-
-        val detectionEndPoint = (detection / total) * maxProgressWidth
-        val warnedEndPoint = ((detection + warned) / total) * maxProgressWidth
-
-        val layerDrawable = progressBar.progressDrawable as LayerDrawable
-        val detectionDrawable = layerDrawable.findDrawableByLayerId(R.id.detection_segment) as GradientDrawable
-        val warnedDrawable = layerDrawable.findDrawableByLayerId(R.id.warned_segment) as GradientDrawable
-        val correctedDrawable = layerDrawable.findDrawableByLayerId(R.id.corrected_segment) as GradientDrawable
-
-        detectionDrawable.setBounds(0, 0, detectionEndPoint.toInt(), progressBar.height)
-        warnedDrawable.setBounds(detectionEndPoint.toInt(), 0, warnedEndPoint.toInt(), progressBar.height)
-        correctedDrawable.setBounds(warnedEndPoint.toInt(), 0, progressBar.width, progressBar.height)
-
-        progressBar.invalidate()
+    override fun onScanStarted() {
+        TODO("Not yet implemented")
     }
 
+    override fun onScanFinished() {
+        TODO("Not yet implemented")
+    }
 
+    override fun onStartConnect(mac: String) {
+        TODO("Not yet implemented")
+    }
 
+    override fun onConnectSuccess(bleDevice: BluetoothDevice?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onConnectDeviceSuccess(bleDevice: BluetoothDevice?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPasswordIncorrect() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onScanFailed(errorCode: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun insertDataIntoDB(timestampMillis: Long, sanction: Int) {
+        eventViewModel.applySanction(timestampMillis, sanction)
+    }
+
+    override fun showDeviceAssociationDialog(device: BluetoothDevice?) {
+        TODO("Not yet implemented")
+    }
 }
 
 

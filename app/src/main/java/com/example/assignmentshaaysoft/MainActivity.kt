@@ -1,89 +1,175 @@
 package com.example.assignmentshaaysoft
 
+import LanguageAdapter
+import android.app.AlertDialog
+import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
+import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.PopupMenu
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProvider
+import com.example.assignmentshaaysoft.bluetooth.BluetoothManagerClass
+import com.numaxes.canicomgps.injection.Injection
+import com.numaxes.canicomgps.injection.ViewModelFactory
 
-class MainActivity : AppCompatActivity() {
 
-    private val languages = arrayOf("English", "Italian", "French")
-    private val languageFlags = intArrayOf(R.drawable.en, R.drawable.it, R.drawable.fr)
+class MainActivity : AppCompatActivity()  {
+    var animalAssociationDuration: Long = 30000
+    private lateinit var bluetoothAdapter: BluetoothAdapter
+     private var scanResultAdapter: BluetoothAdapterDevice? = null
+    private var viewModel: DogViewModel? = null
+    private var isReceiverRegistered = false
+    private lateinit var dialog: AlertDialog
+    private lateinit var progressBar: ProgressBar
+    private lateinit var messageTextView: TextView
+    private lateinit var dogNameEditText: EditText
+    private lateinit var okButton: Button
+     private var scanResults = mutableListOf<Device>()
+    private lateinit var dogRepository : DogRepository
 
-    private val devices = arrayOf("Device Name 1", "Device Name 2", "Device Name 3")
-    private val deviceIcons = intArrayOf(R.drawable.ecllipse, R.drawable.ecllipse2, R.drawable.ecllipse3)
+    private lateinit var dogSpinner: Spinner
+    private var isSpinnerInitialized = false
+
+
+
+    private fun showCollarNotDetectedDialog() {
+        progressBar.visibility = View.GONE
+        messageTextView.text = "Collar not detected."
+        okButton.visibility = View.VISIBLE
+
+    }
+
+
+    private fun configureViewModel() {
+        val modelFactory: ViewModelFactory = Injection.provideViewModelFactory(this)
+        viewModel = ViewModelProvider(this, modelFactory)[DogViewModel::class.java]
+        BluetoothManagerClass.initializeBluetooth(this)
+
+    }
+
+    private fun showCollarDetectedDialog() {
+        progressBar.visibility = View.GONE
+        messageTextView.text = "Collar detected. Enter your dog's name:"
+        dogNameEditText.visibility = View.VISIBLE
+        okButton.visibility = View.VISIBLE
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        configureViewModel()
+        val languageSpinner: Spinner = findViewById(R.id.languageSpinner)
 
-        // References to views
-        val languageLayout: LinearLayout = findViewById(R.id.layout_language)
-        val deviceLayout: LinearLayout = findViewById(R.id.layout_device)
+        val btnAdd : ImageView = findViewById(R.id.btnAdd)
 
-        val languageIcon: ImageView = findViewById(R.id.img_language_icon)
-        val languageText: TextView = findViewById(R.id.tv_language)
 
-        val deviceIcon: ImageView = findViewById(R.id.img_device_icon)
-        val deviceText: TextView = findViewById(R.id.tv_device)
+        dogSpinner = findViewById(R.id.spinner1)
 
-        val addDeviceButton: ImageView = findViewById(R.id.btn_add_device)
-        val submitButton: Button = findViewById(R.id.btn_submit)
+        loadDogDataIntoSpinner()
 
-        // Language dropdown functionality
-        languageLayout.setOnClickListener {
-            showPopupMenu(it, languages, languageFlags, languageText, languageIcon)
+
+
+       bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        btnAdd.setOnClickListener {
+            dogAdding()
         }
 
-        // Device dropdown functionality
-        deviceLayout.setOnClickListener {
-            showPopupMenu(it, devices, deviceIcons, deviceText, deviceIcon)
+
+        // Create a list of languages with corresponding flag icons
+        val languageList = listOf(
+            LanguageItem("English", R.drawable.en),
+            LanguageItem("French", R.drawable.fr),
+            LanguageItem("Italy", R.drawable.it)
+            // Add more languages as needed
+        )
+
+        val adapter = LanguageAdapter(this, languageList)
+        languageSpinner.adapter = adapter
+    }
+
+
+
+
+
+    fun dogAdding() {
+        val intent = Intent(this, BluetoothActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    private fun navigateToHomePage(selectDog: Dog?) {
+          val intent = Intent(this, HomeActivity::class.java).apply {
+              putExtra("DOG_NAME", selectDog!!.name)
+          }
+        startActivity(intent)
+        finish()
+    }
+
+    private fun loadDogDataIntoSpinner() {
+        val dogs: LiveData<List<Dog>>? = viewModel?.getAllDogs()
+        var dogNamesList: List<String> = listOf()
+
+        dogs?.observe(this) { dogList ->
+            dogNamesList = dogList.map { it.name }
+            for (name in dogNamesList) {
+                Log.d("DogName", name)
+            }
         }
 
-        // Add Device Button
-        addDeviceButton.setOnClickListener {
-            Toast.makeText(this, "Add new device clicked", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, DogListActivity::class.java)
-            startActivity(intent)
-        }
 
-        // Submit Button
-        submitButton.setOnClickListener {
-            val selectedLanguage = languageText.text.toString()
-            val selectedDevice = deviceText.text.toString()
-            Toast.makeText(this, "Selected: $selectedLanguage, $selectedDevice", Toast.LENGTH_SHORT).show()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, dogNamesList)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        dogSpinner.adapter = adapter
 
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+        dogSpinner.onItemSelectedListener =object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                if (isSpinnerInitialized) {
+                    val selectedDog = dogs?.value?.get(position)
+                    // Handle dog selection, e.g., display its details
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Selected: $selectedDog",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigateToHomePage(selectedDog)
+                } else{
+                    isSpinnerInitialized = true
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Handle case where nothing is selected
+            }
         }
     }
 
-    // Function to show PopupMenu with icons
-    private fun showPopupMenu(
-        anchor: View,
-        items: Array<String>,
-        icons: IntArray,
-        textView: TextView,
-        imageView: ImageView
-    ) {
-        val popupMenu = PopupMenu(this, anchor)
-        for (i in items.indices) {
-            popupMenu.menu.add(0, i, i, items[i])
-        }
 
-        popupMenu.setOnMenuItemClickListener { item: MenuItem ->
-            textView.text = items[item.itemId]
-            imageView.setImageResource(icons[item.itemId])
-            true
-        }
 
-        popupMenu.show()
+
+
+
+
+    private fun returnToHomePage() {
+        finish()
     }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+//
+    }
+
 }
+
+

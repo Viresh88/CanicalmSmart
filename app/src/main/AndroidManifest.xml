@@ -26,6 +26,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AssignmentShaaySoft"
         tools:targetApi="31">
+       <activity
+           android:name="CalendarActivity"
+           android:exported="false"/>
+
         <activity
             android:name=".BarkHistory"
             android:exported="false" />

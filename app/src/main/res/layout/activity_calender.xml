@@ -1,0 +1,102 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/backicon"
+            android:contentDescription="Back"/>
+
+        <TextView
+            android:id="@+id/calendarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calendar"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- Month and Year Selector -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/yearText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2024"
+            android:textSize="18sp"/>
+
+        <ImageButton
+            android:id="@+id/yearDropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dropdown"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="5dp"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <TextView
+            android:id="@+id/monthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="August"
+            android:textSize="18sp"
+            android:layout_marginStart="16dp"/>
+
+        <ImageButton
+            android:id="@+id/monthDropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dropdown"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="5dp"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="7"
+        android:layout_marginTop="16dp">
+
+        <TextView android:text="Mon" style="@style/CalendarDayHeader" />
+        <TextView android:text="Tue" style="@style/CalendarDayHeader" />
+        <TextView android:text="Wed" style="@style/CalendarDayHeader" />
+        <TextView android:text="Thu" style="@style/CalendarDayHeader" />
+        <TextView android:text="Fri" style="@style/CalendarDayHeader" />
+        <TextView android:text="Sat" style="@style/CalendarDayHeader" />
+        <TextView android:text="Sun" style="@style/CalendarDayHeader" />
+    </GridLayout>
+
+    <!-- Calendar Days Grid -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendarRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp"/>
+
+
+
+</LinearLayout>

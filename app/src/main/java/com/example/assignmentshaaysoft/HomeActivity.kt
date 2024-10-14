@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.BarChart
@@ -24,6 +25,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
        val titleTextView = findViewById<TextView>(R.id.titleTextView)
+       val calendarIcon = findViewById<ImageView>(R.id.calendarIcon)
+        calendarIcon.setOnClickListener {
+            val intent = Intent(this, CalendarActivity::class.java)
+            startActivity(intent)
+        }
         // The text you want to display
         val text = "Canicalm Smart"
 

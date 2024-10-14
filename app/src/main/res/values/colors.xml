@@ -16,11 +16,7 @@
     <color name="time_slot_selected">#4CAF50</color> <!-- Green for selected -->
     <color name="time_slot_unselected">#FFFFFF</color> <!-- White for unselected -->
     <color name="time_slot_text">#000000</color> <!-- Black text color -->
+    <color name="selected_day_background">#FF6200EE</color> <!-- Or any color you prefer -->
 
-    <color name="colorDetection">#4285F4</color> <!-- Blue -->
-    <color name="colorWarned">#FFA726</color>    <!-- Orange -->
-    <color name="colorCorrected">#34A853</color>
-    <color name="selected_text_color">#FFFFFF</color> <!-- Text color for selected button -->
-    <color name="unselected_text_color">#4A4A4A</color> <!-- Text color for unselected button -->
 </resources>
 

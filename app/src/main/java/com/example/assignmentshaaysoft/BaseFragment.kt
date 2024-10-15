@@ -14,7 +14,7 @@ import com.example.assignmentshaaysoft.bluetooth.BluetoothEventCallback
 
 
 abstract class BaseFragment<T : ViewBinding> : Fragment(), BluetoothEventCallback {
-    var bindingT: T? = null
+    private var bindingT: T? = null
     protected val binding : T
         get() = bindingT!!
 

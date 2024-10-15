@@ -17,4 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "AssignmentShaaySoft"
 include(":app")
- 
+include(":app")

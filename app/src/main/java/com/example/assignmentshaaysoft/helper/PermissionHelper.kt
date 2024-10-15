@@ -25,7 +25,6 @@ class PermissionHelper(private val activity: Activity) {
 
 
     fun checkPermissions(): Boolean {
-
          val requestedPermissions = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
             BLE_PERMISSIONS
         } else {

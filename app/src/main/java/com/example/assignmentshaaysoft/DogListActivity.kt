@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
+import com.numaxes.canicomgps.helper.PermissionHelper
 
 
 class DogListActivity : AppCompatActivity() {
@@ -18,9 +18,11 @@ class DogListActivity : AppCompatActivity() {
     private lateinit var dogRecyclerView: RecyclerView
     private lateinit var addButton: ImageView
     private lateinit var deleteButton: ImageView
+    private lateinit var permissionHelper: PermissionHelper
+
     private val dogList = mutableListOf(
-        Dog(1,"Granger Doggie", "",R.drawable.dog, "100%", "Online"),
-        Dog(2,"Max Doggie","", R.drawable.dog, "100%", "Offline")
+        Dog(1,"Granger Doggie", 45,"",5, 5,null),
+        //Dog(2,"Max Doggie",45,"", 55, "100%", "Offline")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +81,7 @@ class DogListActivity : AppCompatActivity() {
             val dogName = dogNameEditText.text.toString()
             if (dogName.isNotEmpty()) {
                 // Add the new dog to the list
-                dogList.add(Dog(5,dogName,"", R.drawable.dog, "100%", "Offline"))
+                //dogList.add(Dog(5,dogName,"", R.drawable.dog, "100%", "Offline"))
                 adapter.notifyItemInserted(dogList.size - 1)
                 alertDialog.dismiss()
             }

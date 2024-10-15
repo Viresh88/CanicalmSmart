@@ -345,7 +345,7 @@ object BluetoothManagerClass {
 
     private fun createFAT32Timestamp(date: Serializable): ByteArray {
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC")).apply {
-            time = date as Date
+            time = (date as Calendar).time // Use the `time` property to get a Date from the Calendar
         }
         val sec = calendar.get(Calendar.SECOND) ushr 1
         val min = calendar.get(Calendar.MINUTE)

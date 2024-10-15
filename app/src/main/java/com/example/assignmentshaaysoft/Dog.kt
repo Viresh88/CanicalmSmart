@@ -11,7 +11,7 @@ data class Dog(
     val id: String,
     var detectionLevel: Int,
     var mode: Int,
-    var schedule: Schedule
+    var schedule: Schedule?
 ) {
     // Secondary constructor with nullable parameters and default values
     constructor(

@@ -26,14 +26,14 @@ class DogListAdapter(private val dogs: List<Dog>) :
 
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
         val dog = dogs[position]
-        holder.dogImage.setImageResource(dog.imageResId)
+        //holder.dogImage.setImageResource(dog.imageResId)
         holder.dogName.text = dog.name
-        holder.batteryLevel.text = dog.batteryLevel
-        holder.status.text = dog.status
-        holder.status.setTextColor(
-            if (dog.status == "Online") holder.itemView.context.getColor(android.R.color.holo_green_dark)
-            else holder.itemView.context.getColor(android.R.color.darker_gray)
-        )
+        holder.batteryLevel.text = dog.batt.toString()
+       // holder.status.text = dog.status
+//        holder.status.setTextColor(
+////            if (dog.status == "Online") holder.itemView.context.getColor(android.R.color.holo_green_dark)
+////            else holder.itemView.context.getColor(android.R.color.darker_gray)
+//        )
     }
 
     override fun getItemCount() = dogs.size

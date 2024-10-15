@@ -1,0 +1,276 @@
+Index: app/src/main/java/com/example/assignmentshaaysoft/CalendarActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.assignmentshaaysoft\n\nimport android.os.Bundle\nimport android.widget.ArrayAdapter\nimport android.widget.CalendarView\nimport android.widget.ImageView\nimport android.widget.Spinner\nimport android.widget.Toast\nimport androidx.appcompat.app.AppCompatActivity\nimport java.util.Calendar\n\nclass CalendarActivity : AppCompatActivity() {\n    private var doubleBackToExitPressedOnce = false\n    private lateinit var spinnerMonth: Spinner\n    private lateinit var spinnerYear: Spinner\n    private lateinit var backButton : ImageView\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_calendar)\n        val calendarView = findViewById<CalendarView>(R.id.calendarView)\n\n        spinnerMonth = findViewById(R.id.spinnerMonth)\n        spinnerYear = findViewById(R.id.spinnerYear)\n        backButton = findViewById(R.id.backButton)\n\n        setupSpinners()\n\n        backButton.setOnClickListener{\n            onBackPressed()\n        }\n\n\n        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->\n            val date = \"$dayOfMonth/${month + 1}/$year\"\n            Toast.makeText(this, \"Selected date: $date\", Toast.LENGTH_SHORT).show()\n        }\n\n    }\n\n\n    private fun setupSpinners() {\n        val months = arrayOf(\"January\", \"February\", \"March\", \"April\", \"May\", \"June\",\n            \"July\", \"August\", \"September\", \"October\", \"November\", \"December\")\n\n        // Use custom layout for spinner items\n        ArrayAdapter(this, R.layout.custom_spinner_item, months).also { adapter ->\n            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)\n            spinnerMonth.adapter = adapter\n        }\n\n        // Set the default to the current month\n        spinnerMonth.setSelection(Calendar.getInstance().get(Calendar.MONTH))\n\n        // Populate the year spinner dynamically\n        val currentYear = Calendar.getInstance().get(Calendar.YEAR)\n        val startYear = currentYear - 20\n        val years = (startYear..currentYear).toList().sortedDescending().map { it.toString() }.toTypedArray()\n\n        ArrayAdapter(this, R.layout.custom_spinner_item, years).also { adapter ->\n            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)\n            spinnerYear.adapter = adapter\n        }\n\n        // Set the default to the current year\n        spinnerYear.setSelection(0)\n    }\n\n\n    override fun onBackPressed() {\n        super.onBackPressed()\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/assignmentshaaysoft/CalendarActivity.kt b/app/src/main/java/com/example/assignmentshaaysoft/CalendarActivity.kt
+--- a/app/src/main/java/com/example/assignmentshaaysoft/CalendarActivity.kt	(revision 5022bea4efef526c336add6a6de046f15606998e)
++++ b/app/src/main/java/com/example/assignmentshaaysoft/CalendarActivity.kt	(date 1728926009694)
+@@ -1,72 +1,72 @@
+-package com.example.assignmentshaaysoft
+-
+-import android.os.Bundle
+-import android.widget.ArrayAdapter
+-import android.widget.CalendarView
+-import android.widget.ImageView
+-import android.widget.Spinner
+-import android.widget.Toast
+-import androidx.appcompat.app.AppCompatActivity
+-import java.util.Calendar
+-
+-class CalendarActivity : AppCompatActivity() {
+-    private var doubleBackToExitPressedOnce = false
+-    private lateinit var spinnerMonth: Spinner
+-    private lateinit var spinnerYear: Spinner
+-    private lateinit var backButton : ImageView
+-    override fun onCreate(savedInstanceState: Bundle?) {
+-        super.onCreate(savedInstanceState)
+-        setContentView(R.layout.activity_calendar)
+-        val calendarView = findViewById<CalendarView>(R.id.calendarView)
+-
+-        spinnerMonth = findViewById(R.id.spinnerMonth)
+-        spinnerYear = findViewById(R.id.spinnerYear)
+-        backButton = findViewById(R.id.backButton)
+-
+-        setupSpinners()
+-
+-        backButton.setOnClickListener{
+-            onBackPressed()
+-        }
+-
+-
+-        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+-            val date = "$dayOfMonth/${month + 1}/$year"
+-            Toast.makeText(this, "Selected date: $date", Toast.LENGTH_SHORT).show()
+-        }
+-
+-    }
+-
+-
+-    private fun setupSpinners() {
+-        val months = arrayOf("January", "February", "March", "April", "May", "June",
+-            "July", "August", "September", "October", "November", "December")
+-
+-        // Use custom layout for spinner items
+-        ArrayAdapter(this, R.layout.custom_spinner_item, months).also { adapter ->
+-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+-            spinnerMonth.adapter = adapter
+-        }
+-
+-        // Set the default to the current month
+-        spinnerMonth.setSelection(Calendar.getInstance().get(Calendar.MONTH))
+-
+-        // Populate the year spinner dynamically
+-        val currentYear = Calendar.getInstance().get(Calendar.YEAR)
+-        val startYear = currentYear - 20
+-        val years = (startYear..currentYear).toList().sortedDescending().map { it.toString() }.toTypedArray()
+-
+-        ArrayAdapter(this, R.layout.custom_spinner_item, years).also { adapter ->
+-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+-            spinnerYear.adapter = adapter
+-        }
+-
+-        // Set the default to the current year
+-        spinnerYear.setSelection(0)
+-    }
+-
+-
+-    override fun onBackPressed() {
+-        super.onBackPressed()
+-    }
+-}
+\ No newline at end of file
++//package com.example.assignmentshaaysoft
++//
++//import android.os.Bundle
++//import android.widget.ArrayAdapter
++//import android.widget.CalendarView
++//import android.widget.ImageView
++//import android.widget.Spinner
++//import android.widget.Toast
++//import androidx.appcompat.app.AppCompatActivity
++//import java.util.Calendar
++//
++//class CalendarActivity : AppCompatActivity() {
++//    private var doubleBackToExitPressedOnce = false
++//    private lateinit var spinnerMonth: Spinner
++//    private lateinit var spinnerYear: Spinner
++//    private lateinit var backButton : ImageView
++//    override fun onCreate(savedInstanceState: Bundle?) {
++//        super.onCreate(savedInstanceState)
++//        setContentView(R.layout.activity_calendar)
++//        val calendarView = findViewById<CalendarView>(R.id.calendarView)
++//
++//        spinnerMonth = findViewById(R.id.spinnerMonth)
++//        spinnerYear = findViewById(R.id.spinnerYear)
++//        backButton = findViewById(R.id.backButton)
++//
++//        setupSpinners()
++//
++//        backButton.setOnClickListener{
++//            onBackPressed()
++//        }
++//
++//
++//        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
++//            val date = "$dayOfMonth/${month + 1}/$year"
++//            Toast.makeText(this, "Selected date: $date", Toast.LENGTH_SHORT).show()
++//        }
++//
++//    }
++//
++//
++//    private fun setupSpinners() {
++//        val months = arrayOf("January", "February", "March", "April", "May", "June",
++//            "July", "August", "September", "October", "November", "December")
++//
++//        // Use custom layout for spinner items
++//        ArrayAdapter(this, R.layout.custom_spinner_item, months).also { adapter ->
++//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
++//            spinnerMonth.adapter = adapter
++//        }
++//
++//        // Set the default to the current month
++//        spinnerMonth.setSelection(Calendar.getInstance().get(Calendar.MONTH))
++//
++//        // Populate the year spinner dynamically
++//        val currentYear = Calendar.getInstance().get(Calendar.YEAR)
++//        val startYear = currentYear - 20
++//        val years = (startYear..currentYear).toList().sortedDescending().map { it.toString() }.toTypedArray()
++//
++//        ArrayAdapter(this, R.layout.custom_spinner_item, years).also { adapter ->
++//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
++//            spinnerYear.adapter = adapter
++//        }
++//
++//        // Set the default to the current year
++//        spinnerYear.setSelection(0)
++//    }
++//
++//
++//    override fun onBackPressed() {
++//        super.onBackPressed()
++//    }
++//}
+\ No newline at end of file
+Index: app/src/main/res/layout/custom_spinner_item.xml
+===================================================================
+diff --git a/app/src/main/res/layout/custom_spinner_item.xml b/app/src/main/res/layout/custom_spinner_item.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/custom_spinner_item.xml	(revision 5022bea4efef526c336add6a6de046f15606998e)
++++ /dev/null	(revision 5022bea4efef526c336add6a6de046f15606998e)
+@@ -1,10 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:id="@+id/text1"
+-    android:layout_width="match_parent"
+-    android:layout_height="wrap_content"
+-    android:textSize="16sp"
+-    android:padding="8dp"
+-    android:textColor="#898989"
+-    android:fontFamily="@font/poppins"
+-    android:gravity="center_vertical" />
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision 5022bea4efef526c336add6a6de046f15606998e)
++++ /dev/null	(revision 5022bea4efef526c336add6a6de046f15606998e)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: app/src/main/res/layout/activity_get_started.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/linearLayout2\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:background=\"@drawable/getstarted\"\n    android:gravity=\"center_vertical\"\n    tools:context=\".GetStarted\">\n\n\n  <ImageView\n      android:id=\"@+id/imageView\"\n      android:layout_width=\"120dp\"\n      android:layout_height=\"18dp\"\n      android:layout_marginStart=\"26dp\"\n      android:layout_marginLeft=\"26dp\"\n      android:layout_marginTop=\"446dp\"\n      android:layout_marginBottom=\"20dp\"\n      android:background=\"@color/white\"\n      android:src=\"@drawable/numaxesimg\"\n      app:layout_constraintBottom_toTopOf=\"@+id/textView12\"\n      app:layout_constraintStart_toStartOf=\"parent\"\n      app:layout_constraintTop_toTopOf=\"parent\" />\n\n  <TextView\n      android:id=\"@+id/textView12\"\n      android:layout_width=\"263dp\"\n      android:layout_height=\"48dp\"\n      android:layout_marginStart=\"24dp\"\n      android:layout_marginBottom=\"40dp\"\n      android:layout_marginTop=\"477dp\"\n      android:fontFamily=\"@font/poppins\"\n      android:text=\"Canicalm Smart\"\n      android:lineHeight=\"48dp\"\n      android:textColor=\"#262727\"\n      android:textFontWeight=\"400\"\n      android:textSize=\"32sp\"\n      app:layout_constraintTop_toTopOf=\"parent\"\n      app:layout_constraintStart_toStartOf=\"parent\"\n      app:layout_constraintTop_toBottomOf=\"@+id/imageView\" />\n\n  <!--  <ImageView-->\n  <!--      android:id=\"@+id/btngetStarted\"-->\n  <!--      android:layout_width=\"wrap_content\"-->\n  <!--      android:layout_height=\"wrap_content\"-->\n  <!--      android:layout_marginTop=\"30dp\"-->\n  <!--      android:src=\"@drawable/buttongetstarted\"/>-->\n\n  <Button\n      android:id=\"@+id/btngetStarted\"\n      android:layout_width=\"327dp\"\n      android:layout_height=\"wrap_content\"\n      android:layout_marginStart=\"9dp\"\n      android:layout_marginLeft=\"9dp\"\n      android:layout_marginEnd=\"9dp\"\n      android:layout_marginRight=\"9dp\"\n      android:background=\"@drawable/rounded_button\"\n      android:text=\"Get Started\"\n      android:textAllCaps=\"true\"\n      android:textColor=\"@android:color/white\"\n      android:fontFamily=\"@font/poppins\"\n      android:textFontWeight=\"600\"\n      android:textSize=\"18sp\"\n      app:layout_constraintBottom_toBottomOf=\"parent\"\n      app:layout_constraintEnd_toEndOf=\"parent\"\n      app:layout_constraintStart_toStartOf=\"parent\"\n      app:layout_constraintTop_toBottomOf=\"@+id/textView12\" />\n\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_get_started.xml b/app/src/main/res/layout/activity_get_started.xml
+--- a/app/src/main/res/layout/activity_get_started.xml	(revision 5022bea4efef526c336add6a6de046f15606998e)
++++ b/app/src/main/res/layout/activity_get_started.xml	(date 1728926009695)
+@@ -18,8 +18,7 @@
+       android:layout_marginLeft="26dp"
+       android:layout_marginTop="446dp"
+       android:layout_marginBottom="20dp"
+-      android:background="@color/white"
+-      android:src="@drawable/numaxesimg"
++      android:src="@drawable/ic_logo_numaxes"
+       app:layout_constraintBottom_toTopOf="@+id/textView12"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"VcsDirectoryMappings\">\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision 5022bea4efef526c336add6a6de046f15606998e)
++++ b/.idea/vcs.xml	(date 1728926009694)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\n    <!-- Base application theme. -->\n    <style name=\"Base.Theme.AssignmentShaaySoft\" parent=\"Theme.AppCompat.DayNight.NoActionBar\">\n        <!-- Customize your light theme here. -->\n        <!-- <item name=\"colorPrimary\">@color/my_light_primary</item> -->\n    </style>\n\n    <style name=\"AlertDialogCustom\" parent=\"Theme.AppCompat.Light.Dialog.Alert\">\n        <item name=\"android:colorAccent\">#FF6640</item>\n    </style>\n\n    <style name=\"Theme.AssignmentShaaySoft\" parent=\"Base.Theme.AssignmentShaaySoft\" />\n\n    <style name=\"CalendarDateStyle\">\n        <item name=\"android:textSize\">16sp</item>\n        <item name=\"android:textColor\">#000000</item>\n    </style>\n\n\n    <!-- styles.xml -->\n    <style name=\"MyCalendarTheme\" parent=\"Theme.AppCompat.Light\">\n        <item name=\"colorAccent\">#2687E1</item>\n        <item name=\"android:textColorPrimary\">@color/white</item>\n        <item name=\"android:calendarTextColor\">#6E6E6E</item>\n        <item name=\"android:weekNumberColor\">@color/green</item>\n        <item name=\"android:dateTextAppearance\">@style/MyCalendarDateText</item>\n    </style>\n\n    <style name=\"MyCalendarDateText\" parent=\"android:TextAppearance.Small\">\n        <item name=\"android:textSize\">16sp</item>\n        <item name=\"android:textColor\">#6E6E6E</item>\n        <item name=\"android:fontFamily\">@font/poppins</item>\n    </style>\n\n\n    <style name=\"CustomTabText\">\n        <item name=\"android:textSize\">14sp</item>\n        <item name=\"android:textAllCaps\">false</item> <!-- Prevent text from being uppercase -->\n        <item name=\"android:textStyle\">bold</item> <!-- Make text bold -->\n        <item name=\"android:fontFamily\">@font/poppins</item> <!-- Apply custom font if needed -->\n    </style>\n\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+--- a/app/src/main/res/values/themes.xml	(revision 5022bea4efef526c336add6a6de046f15606998e)
++++ b/app/src/main/res/values/themes.xml	(date 1728926009695)
+@@ -40,4 +40,6 @@
+         <item name="android:fontFamily">@font/poppins</item> <!-- Apply custom font if needed -->
+     </style>
+ 
++    <style name="Theme.CanicalmSmart" parent="android:Theme.Material.Light.NoActionBar" />
++
+ </resources>
+\ No newline at end of file
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    id(\"com.android.application\")\n    id(\"org.jetbrains.kotlin.android\")\n    id (\"kotlin-android\")\n    id(\"com.google.devtools.ksp\") version \"1.9.10-1.0.13\"\n\n}\n\nandroid {\n    namespace = \"com.example.assignmentshaaysoft\"\n    compileSdk = 34\n\n    defaultConfig {\n        applicationId = \"com.example.assignmentshaaysoft\"\n        minSdk = 24\n        targetSdk = 34\n        versionCode = 1\n        versionName = \"1.0\"\n\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\n    }\n\n    buildTypes {\n        release {\n            isMinifyEnabled = false\n            proguardFiles(\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\n                \"proguard-rules.pro\"\n            )\n        }\n    }\n    compileOptions {\n        sourceCompatibility = JavaVersion.VERSION_17\n        targetCompatibility = JavaVersion.VERSION_17\n    }\n    kotlinOptions {\n        jvmTarget = \"17\"\n    }\n    buildFeatures{\n        viewBinding = true\n    }\n\n}\n\ndependencies {\n    implementation (\"com.github.PhilJay:MPAndroidChart:v3.1.0\")\n\n    implementation (\"androidx.room:room-runtime:2.6.1\")\n    implementation (\"androidx.room:room-paging:2.6.1\")\n    implementation (\"androidx.room:room-ktx:2.6.1\")\n\n\n    implementation (\"androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6\")\n    implementation (\"androidx.lifecycle:lifecycle-livedata-ktx:2.8.6\")\n\n\n    implementation (\"androidx.lifecycle:lifecycle-extensions:2.2.0\")\n\n\n    ksp(\"androidx.room:room-compiler:2.6.1\")\n\n    implementation (\"androidx.recyclerview:recyclerview:1.3.1\")\n\n\n    //Gson\n    implementation (\"com.google.code.gson:gson:2.10.1\")\n\n    implementation (\"io.reactivex.rxjava2:rxandroid:2.1.1\")\n    implementation (\"io.reactivex.rxjava2:rxjava:2.2.21\")\n\n    //PERMISSION\n    implementation (\"pub.devrel:easypermissions:3.0.0\")\n\n    //Navigation\n    //noinspection GradleDependency\n    implementation (\"androidx.navigation:navigation-fragment-ktx:2.6.0\")\n    //noinspection GradleDependency\n    implementation (\"androidx.navigation:navigation-ui-ktx:2.6.0\")\n\n    implementation(\"androidx.core:core-ktx:1.13.1\")\n    implementation(\"androidx.appcompat:appcompat:1.7.0\")\n    implementation(\"com.google.android.material:material:1.12.0\")\n    testImplementation(\"junit:junit:4.13.2\")\n    androidTestImplementation(\"androidx.test.ext:junit:1.2.1\")\n    androidTestImplementation(\"androidx.test.espresso:espresso-core:3.6.1\")\n\n\n        implementation (\"androidx.lifecycle:lifecycle-extensions:2.2.0\") // Required for Transformations\n\n\n\n\n\n    //noinspection GradleDependency\n\n    //noinspection GradleDependency\n    implementation (\"androidx.core:core-splashscreen:1.0.0-beta02\")\n\n    implementation (\"androidx.vectordrawable:vectordrawable:1.1.0\")\n\n    //PREFERENCES\n    implementation (\"androidx.preference:preference-ktx:1.2.1\")\n\n\n\n\n\n\n\n\n\n    //COROUTINE\n    implementation (\"org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1\")\n\n    //WORKER\n    implementation (\"androidx.work:work-runtime-ktx:2.8.1\")\n\n\n    testImplementation (\"androidx.room:room-testing:2.5.0\")\n\n\n\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision 5022bea4efef526c336add6a6de046f15606998e)
++++ b/app/build.gradle.kts	(date 1728926009694)
+@@ -80,6 +80,7 @@
+     implementation("androidx.core:core-ktx:1.13.1")
+     implementation("androidx.appcompat:appcompat:1.7.0")
+     implementation("com.google.android.material:material:1.12.0")
++    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+     testImplementation("junit:junit:4.13.2")
+     androidTestImplementation("androidx.test.ext:junit:1.2.1")
+     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+Index: settings.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>pluginManagement {\n    repositories {\n        google()\n        mavenCentral()\n        gradlePluginPortal()\n    }\n}\ndependencyResolutionManagement {\n    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)\n    repositories {\n        google()\n        mavenCentral()\n\n        maven(url = uri(\"https://jitpack.io\"))\n    }\n}\n\nrootProject.name = \"AssignmentShaaySoft\"\ninclude(\":app\")\n 
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle.kts b/settings.gradle.kts
+--- a/settings.gradle.kts	(revision 5022bea4efef526c336add6a6de046f15606998e)
++++ b/settings.gradle.kts	(date 1728926009695)
+@@ -17,4 +17,4 @@
+ 
+ rootProject.name = "AssignmentShaaySoft"
+ include(":app")
+- 
+\ No newline at end of file
++include(":app")
